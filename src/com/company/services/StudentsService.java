@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface StudentsService {
 
-    public List<Student> getAllStudents();
+    List<Student> getAllStudents();
 }
 
 
 //TODO создать метод void addStudent(Student s)
 //TODo создать метод void removeStudent(Student s)
+
