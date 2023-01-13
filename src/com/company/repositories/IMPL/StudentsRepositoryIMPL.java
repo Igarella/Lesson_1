@@ -9,53 +9,86 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class StudentsRepositoryIMPL implements StudentsRepository {
+    public static void main(String[] args) {
+        try(ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",true))){
+            Student student = new Student(UUID.randomUUID(), "Petya", "Ivanov");
+            Student student1 = new Student(UUID.randomUUID(), "ivan", "Petrov");
+            ois.writeObject(student);
+            ois.close();
+            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt"));
+//            while (inputStream.available() != -1) {
+//                Student student3 = (Student) inputStream.readObject();
+//                System.out.println(student3);
+//
+//            }
+            Student student2 = (Student) inputStream.readObject();
+            Student student3 = (Student) inputStream.readObject();
+            System.out.println(student2);
+            System.out.println(student3);
+            inputStream.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     @Override
     public List<Student> getAllStudents() {
         List<Student> students = new ArrayList<>();
-        try {
-            File file = new File("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
-            //создаем объект FileReader для объекта File
-            FileReader fr = new FileReader(file);
-            //создаем BufferedReader с существующего FileReader для построчного считывания
-            BufferedReader reader = new BufferedReader(fr);
-            // считаем сначала первую строку
-            String line = reader.readLine();
-            while (line != null) {
-                String[] studentFromFile = line.split(",");
-                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2]);
+
+        try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt")))
+        {
+            while (true) {
+                Student student=(Student) ois.readObject();
                 students.add(student);
-                // считываем остальные строки в цикле
-                line = reader.readLine();
             }
-        } catch (IOException e) {
-            e.printStackTrace();
         }
-        return students;
+        catch(Exception ex){
+            return students;
+        }
+//        try {
+//            File file = new File("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
+//            //создаем объект FileReader для объекта File
+//            FileReader fr = new FileReader(file);
+//            //создаем BufferedReader с существующего FileReader для построчного считывания
+//            BufferedReader reader = new BufferedReader(fr);
+//            // считаем сначала первую строку
+//            String line = reader.readLine();
+//            while (line != null) {
+//                String[] studentFromFile = line.split(",");
+//                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2]);
+//                students.add(student);
+//                // считываем остальные строки в цикле
+//                line = reader.readLine();
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @Override
     public void writeStudent(List<Student> students) {
-
-
-
     }
 
     @Override
     public void addStudent(Student student) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt"))) {
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",false))) {
             oos.writeObject(student);
+            oos.writeObject(student);
+            oos.reset();
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+           ex.printStackTrace();
 
 
 //        try {
