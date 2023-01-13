@@ -14,28 +14,32 @@ import java.util.UUID;
 import java.util.stream.Stream;
 
 public class StudentsRepositoryIMPL implements StudentsRepository {
+    static List<Student> studentList = new ArrayList<>();
     public static void main(String[] args) {
         try(ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",true))){
             Student student = new Student(UUID.randomUUID(), "Petya", "Ivanov");
             Student student1 = new Student(UUID.randomUUID(), "ivan", "Petrov");
+            Student student2 = new Student(UUID.randomUUID(), "Petr", "Petrov");
             ois.writeObject(student);
+            ois.writeObject(student1);
+            ois.writeObject(student2);
             ois.close();
             ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt"));
-//            while (inputStream.available() != -1) {
-//                Student student3 = (Student) inputStream.readObject();
-//                System.out.println(student3);
-//
-//            }
-            Student student2 = (Student) inputStream.readObject();
-            Student student3 = (Student) inputStream.readObject();
-            System.out.println(student2);
-            System.out.println(student3);
-            inputStream.close();
+            while (true) {
+                Student student3 = (Student) inputStream.readObject();
+                System.out.println(student3);
+
+            }
+//            Student student2 = (Student) inputStream.readObject();
+//            Student student3 = (Student) inputStream.readObject();
+//            System.out.println(student2);
+//            System.out.println(student3);
+//            inputStream.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("end");
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -45,17 +49,13 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
 
     @Override
     public List<Student> getAllStudents() {
-        List<Student> students = new ArrayList<>();
-
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt")))
         {
-            while (true) {
-                Student student=(Student) ois.readObject();
-                students.add(student);
-            }
+            studentList = (List<Student>) ois.readObject();
+            return studentList;
         }
         catch(Exception ex){
-            return students;
+            return studentList;
         }
 //        try {
 //            File file = new File("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
@@ -79,17 +79,19 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
 
     @Override
     public void writeStudent(List<Student> students) {
+        try {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt"));
+            stream.writeObject(students);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     @Override
     public void addStudent(Student student) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",false))) {
-            oos.writeObject(student);
-            oos.writeObject(student);
-            oos.reset();
-        } catch (Exception ex) {
-           ex.printStackTrace();
-
+        studentList.add(student);
+        writeStudent(studentList);
 
 //        try {
 //            FileWriter writer = new FileWriter("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",true);
@@ -98,7 +100,7 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //        }
-        }
+//        }
     }
 
     @Override

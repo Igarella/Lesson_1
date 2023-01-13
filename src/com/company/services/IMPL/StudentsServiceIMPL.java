@@ -17,6 +17,12 @@ public class StudentsServiceIMPL implements StudentsService {
     }
 
     @Override
+    public void writeStudent(List<Student> studentList) {
+        StudentsRepository repository = new StudentsRepositoryIMPL();
+        repository.writeStudent(studentList);
+    }
+
+    @Override
     public void addStudent(Student student) {
         StudentsRepository repository = new StudentsRepositoryIMPL();
         repository.addStudent(student);

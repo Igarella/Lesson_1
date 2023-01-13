@@ -9,6 +9,8 @@ public interface StudentsService {
 
     List<Student> getAllStudents();
 
+    void writeStudent(List<Student> studentList);
+
     void addStudent(Student student);
 
     void deleteStudent(UUID uuid);
