@@ -41,7 +41,7 @@ public class Main {
                     studentsService.deleteStudent(uuid);
                 }
                 case 0 -> menuProgram();
-                default -> System.out.println("Ввведите правильный номер");
+                default -> System.out.println("Dddtlbnt правильный номер");
             }
         } while (menu != 9);
     }

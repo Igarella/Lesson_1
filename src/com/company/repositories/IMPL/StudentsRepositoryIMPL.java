@@ -15,38 +15,6 @@ import java.util.stream.Stream;
 
 public class StudentsRepositoryIMPL implements StudentsRepository {
     static List<Student> studentList = new ArrayList<>();
-    public static void main(String[] args) {
-        try(ObjectOutputStream ois = new ObjectOutputStream(new FileOutputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt",true))){
-            Student student = new Student(UUID.randomUUID(), "Petya", "Ivanov");
-            Student student1 = new Student(UUID.randomUUID(), "ivan", "Petrov");
-            Student student2 = new Student(UUID.randomUUID(), "Petr", "Petrov");
-            ois.writeObject(student);
-            ois.writeObject(student1);
-            ois.writeObject(student2);
-            ois.close();
-            ObjectInputStream inputStream = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt"));
-            while (true) {
-                Student student3 = (Student) inputStream.readObject();
-                System.out.println(student3);
-
-            }
-//            Student student2 = (Student) inputStream.readObject();
-//            Student student3 = (Student) inputStream.readObject();
-//            System.out.println(student2);
-//            System.out.println(student3);
-//            inputStream.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            System.out.println("end");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
     @Override
     public List<Student> getAllStudents() {
         try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt")))
@@ -104,24 +72,29 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
     }
 
     @Override
-    public void deleteStudent(UUID uuid) throws IOException {
-        Path input = Paths.get("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
-        Path temp = Files.createTempFile("temp", ".txt");
-        Stream<String> lines = Files.lines(input);
-        try (BufferedWriter writer = Files.newBufferedWriter(temp)) {
-            lines
-                    .filter(line -> !line.startsWith(uuid.toString()))
-                    .forEach(line -> {
-                        try {
-                            writer.write(line);
-                            writer.newLine();
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
-                    });
-        }
+    public void deleteStudent(UUID uuid) {
+        studentList.removeIf(student -> student.getId().equals(uuid));
+        writeStudent(studentList);
 
-        Files.move(temp, input, StandardCopyOption.REPLACE_EXISTING);
+
+
+//        Path input = Paths.get("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
+//        Path temp = Files.createTempFile("temp", ".txt");
+//        Stream<String> lines = Files.lines(input);
+//        try (BufferedWriter writer = Files.newBufferedWriter(temp)) {
+//            lines
+//                    .filter(line -> !line.startsWith(uuid.toString()))
+//                    .forEach(line -> {
+//                        try {
+//                            writer.write(line);
+//                            writer.newLine();
+//                        } catch (IOException e) {
+//                            throw new RuntimeException(e);
+//                        }
+//                    });
+//        }
+//
+//        Files.move(temp, input, StandardCopyOption.REPLACE_EXISTING);
     }
 
 
