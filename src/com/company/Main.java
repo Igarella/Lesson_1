@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.DTO.Phone;
 import com.company.DTO.Student;
 import com.company.services.IMPL.StudentsServiceIMPL;
 import com.company.services.StudentsService;
@@ -10,6 +11,9 @@ import java.util.UUID;
 public class Main {
 
     public static void main(String[] args) {
+        Student student = new Student(UUID.randomUUID(), "Ivan", "Petrov");
+        Phone phone = new Phone(1, "+124524", "mobile", student.getId());
+
         startMenu();
     }
 
@@ -41,7 +45,7 @@ public class Main {
                     studentsService.deleteStudent(uuid);
                 }
                 case 0 -> menuProgram();
-                default -> System.out.println("Dddtlbnt правильный номер");
+                default -> System.out.println("Введите правильный номер");
             }
         } while (menu != 9);
     }

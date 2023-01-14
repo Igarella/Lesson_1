@@ -1,5 +1,6 @@
 package com.company.repositories;
 
+import com.company.DTO.Phone;
 import com.company.DTO.Student;
 
 import java.io.IOException;
@@ -15,4 +16,5 @@ public interface StudentsRepository {
     void addStudent(Student student);
 
     void deleteStudent(UUID uuid) throws IOException;
+
 }
