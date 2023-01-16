@@ -1,5 +1,4 @@
 package com.company.DTO;
-
 import java.util.UUID;
 
 public class Phone {

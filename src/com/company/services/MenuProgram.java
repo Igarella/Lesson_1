@@ -9,6 +9,8 @@ public class MenuProgram {
         System.out.println("4 – Добавление телефона студенту");
         System.out.println("5 – Получение студента по Id");
         System.out.println("6 – Добавление email студенту");
+        System.out.println("7 – Просмотр списка специализаций");
+        System.out.println("8 – Добавление специализации");
         System.out.println("0 – Возврат в главное меню");
         System.out.println("9 – ВЫХОД ");
     }

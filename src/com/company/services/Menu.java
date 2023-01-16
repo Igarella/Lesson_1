@@ -2,16 +2,18 @@ package com.company.services;
 
 import com.company.DTO.Email;
 import com.company.DTO.Phone;
+import com.company.DTO.Specialization;
 import com.company.DTO.Student;
 import com.company.services.IMPL.EmailServiceIMPL;
 import com.company.services.IMPL.PhoneServiceIMPL;
+import com.company.services.IMPL.SpecializationServiceIMPL;
 import com.company.services.IMPL.StudentsServiceIMPL;
 
 import java.util.Scanner;
 import java.util.UUID;
 
 public class Menu {
-      public static void startMenu() {
+     public static void startMenu() {
         int menu;
         Scanner in = new Scanner(System.in);
         MenuProgram.menuProgram();
@@ -65,6 +67,17 @@ public class Menu {
                     Email studentEmail = new Email(email, studentIdForEmail);
                     EmailService service = new EmailServiceIMPL();
                     service.addEmail(studentEmail);
+                }
+                case 7 -> {
+                    SpecializationService service = new SpecializationServiceIMPL();
+                    service.getAllSpecializations().forEach(System.out::println);
+                }
+                case 8 -> {
+                    System.out.println("Введите название специализации");
+                    String specializationName = in.next();
+                    Specialization specialization = new Specialization(specializationName);
+                    SpecializationService service = new SpecializationServiceIMPL();
+                    service.addSpecialization(specialization);
                 }
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");

@@ -15,7 +15,7 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
         List<Student> studentList = new ArrayList<>();
         try {
 
-            File file = new File("/Users/igor/IdeaProjects/Lesson 1/resources/Students.txt");
+            File file = new File("resources/Students.txt");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания
@@ -64,9 +64,6 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
                 .findFirst()
                 .get();
     }
-
-
 }
 
-
-//TODO хранение в файле students.txt (чтение)
+//Todo getAllStudents выводит студентов без телефонов даже если их добавили
