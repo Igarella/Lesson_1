@@ -1,9 +1,9 @@
 package com.company.services.IMPL;
 
 import com.company.DTO.Email;
-import com.company.DTO.Phone;
-import com.company.repositories.IMPL.EmailRepository;
+import com.company.repositories.EmailRepository;
 import com.company.repositories.IMPL.EmailRepositoryIMPL;
+import com.company.services.EmailService;
 
 import java.util.List;
 import java.util.UUID;

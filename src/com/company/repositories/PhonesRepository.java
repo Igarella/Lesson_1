@@ -1,4 +1,4 @@
-package com.company.repositories.IMPL;
+package com.company.repositories;
 
 import com.company.DTO.Phone;
 import com.company.DTO.Student;
@@ -17,4 +17,8 @@ public interface PhonesRepository {
     void addPhone(Phone phone);
 
     void deletePhone(UUID uuid);
+
+    List<Phone> getPhoneByStudentId(UUID id);
+
+//    void addPhoneByStudentId(UUID studentId);
 }

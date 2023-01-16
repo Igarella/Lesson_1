@@ -17,4 +17,5 @@ public interface StudentsRepository {
 
     void deleteStudent(UUID uuid) throws IOException;
 
+    Student getStudentById(UUID id);
 }

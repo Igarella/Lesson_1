@@ -2,14 +2,13 @@ package com.company.services.IMPL;
 
 import com.company.DTO.Phone;
 import com.company.repositories.IMPL.PhoneRepositoryIMPL;
-import com.company.repositories.IMPL.PhonesRepository;
-import com.company.repositories.IMPL.StudentsRepositoryIMPL;
-import com.company.repositories.StudentsRepository;
+import com.company.repositories.PhonesRepository;
+import com.company.services.PhoneService;
 
 import java.util.List;
 import java.util.UUID;
 
-public class PhoneServiceIMPL implements PhoneService{
+public class PhoneServiceIMPL implements PhoneService {
     @Override
     public List<Phone> getAllPhones() {
         PhonesRepository repository = new PhoneRepositoryIMPL();

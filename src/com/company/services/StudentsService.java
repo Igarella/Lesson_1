@@ -14,9 +14,9 @@ public interface StudentsService {
     void addStudent(Student student);
 
     void deleteStudent(UUID uuid);
+
+    Student getStudentById(UUID id);
 }
 
 
-//TODO создать метод void addStudent(Student s)
-//TODo создать метод void removeStudent(Student s)
 

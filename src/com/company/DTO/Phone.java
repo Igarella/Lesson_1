@@ -3,7 +3,7 @@ package com.company.DTO;
 import java.util.UUID;
 
 public class Phone {
-    private UUID id;
+    private final UUID id;
     private int prefixCountry;
     private String numberPhone;
     private String typePhone;
@@ -15,6 +15,14 @@ public class Phone {
         this.numberPhone = numberPhone;
         this.typePhone = typePhone;
         this.StudentId = studentId;
+    }
+
+    public Phone(UUID id, int prefixCountry, String numberPhone, String typePhone, UUID studentId) {
+        this.id = id;
+        this.prefixCountry = prefixCountry;
+        this.numberPhone = numberPhone;
+        this.typePhone = typePhone;
+        StudentId = studentId;
     }
 
     @Override
@@ -61,6 +69,6 @@ public class Phone {
     }
 
     public void setStudentId(UUID studentId) {
-        StudentId = studentId;
+        this.StudentId = studentId;
     }
 }

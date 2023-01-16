@@ -1,13 +1,31 @@
 package com.company.DTO;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class Student implements Serializable {
     private UUID id;
     private String firstName;
     private String secondName;
+    private List<Phone> phoneStudent;
+    private List<Email> emailsStudent;
+
+    public List<Phone> getPhoneStudent() {
+        return phoneStudent;
+    }
+
+    public void setPhoneStudent(List<Phone> phoneStudent) {
+        this.phoneStudent = phoneStudent;
+    }
+
+    public List<Email> getEmailsStudent() {
+        return emailsStudent;
+    }
+
+    public void setEmailsStudent(List<Email> emailsStudent) {
+        this.emailsStudent = emailsStudent;
+    }
 
     public UUID getId() {
         return id;
@@ -46,11 +64,14 @@ public class Student implements Serializable {
     }
 
 
-
     @Override
     public String toString() {
-        return "id=" + id +
+        return "Student{" +
+                "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'';
+                ", secondName='" + secondName + '\'' +
+                ", phoneStudent=" + phoneStudent +
+                ", emailsStudent=" + emailsStudent +
+                '}';
     }
 }

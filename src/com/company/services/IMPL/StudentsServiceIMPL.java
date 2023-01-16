@@ -1,8 +1,15 @@
 package com.company.services.IMPL;
 
+import com.company.DTO.Email;
+import com.company.DTO.Phone;
 import com.company.DTO.Student;
+import com.company.repositories.EmailRepository;
+import com.company.repositories.IMPL.EmailRepositoryIMPL;
+import com.company.repositories.IMPL.PhoneRepositoryIMPL;
 import com.company.repositories.IMPL.StudentsRepositoryIMPL;
+import com.company.repositories.PhonesRepository;
 import com.company.repositories.StudentsRepository;
+import com.company.services.EmailService;
 import com.company.services.StudentsService;
 
 import java.io.IOException;
@@ -36,5 +43,19 @@ public class StudentsServiceIMPL implements StudentsService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public Student getStudentById(UUID id) {
+        StudentsRepository repository = new StudentsRepositoryIMPL();
+        Student student = repository.getStudentById(id);
+        PhonesRepository phonesRepository = new PhoneRepositoryIMPL();
+        List<Phone> phoneList = phonesRepository.getPhoneByStudentId(id);
+        student.setPhoneStudent(phoneList);
+        EmailRepository emailRepository = new EmailRepositoryIMPL();
+        List<Email> emailList = emailRepository.getEmailByStudentId(id);
+        student.setEmailsStudent(emailList);
+        return student;
     }
 }

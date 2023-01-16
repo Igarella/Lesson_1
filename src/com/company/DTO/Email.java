@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Email {
-    private UUID id;
+    private final UUID id;
     private String email;
     private UUID studentId;
     private String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" +
@@ -20,6 +20,12 @@ public class Email {
         } else {
             this.email = "";
         }
+    }
+
+    public Email(UUID id, String email, UUID studentId) {
+        this.id = id;
+        this.email = email;
+        this.studentId = studentId;
     }
 
     private boolean validateEmail(String email) {

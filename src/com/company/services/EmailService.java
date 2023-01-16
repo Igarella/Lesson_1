@@ -1,11 +1,12 @@
-package com.company.repositories.IMPL;
+package com.company.services;
 
 import com.company.DTO.Email;
+import com.company.DTO.Phone;
 
 import java.util.List;
 import java.util.UUID;
 
-public interface EmailRepository {
+public interface EmailService {
     List<Email> getAllEmails();
 
     void writeEmails(List<Email> list);
