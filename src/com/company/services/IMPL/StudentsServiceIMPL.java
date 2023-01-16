@@ -1,18 +1,14 @@
 package com.company.services.IMPL;
 
-import com.company.DTO.Email;
-import com.company.DTO.Phone;
-import com.company.DTO.Student;
-import com.company.repositories.EmailRepository;
-import com.company.repositories.IMPL.EmailRepositoryIMPL;
-import com.company.repositories.IMPL.PhoneRepositoryIMPL;
-import com.company.repositories.IMPL.StudentsRepositoryIMPL;
-import com.company.repositories.PhonesRepository;
-import com.company.repositories.StudentsRepository;
+import com.company.DTO.*;
+import com.company.repositories.*;
+import com.company.repositories.IMPL.*;
 import com.company.services.EmailService;
+import com.company.services.StudentSpecializationService;
 import com.company.services.StudentsService;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,6 +52,18 @@ public class StudentsServiceIMPL implements StudentsService {
         EmailRepository emailRepository = new EmailRepositoryIMPL();
         List<Email> emailList = emailRepository.getEmailByStudentId(id);
         student.setEmailsStudent(emailList);
+        List<StudentSpecialization> studentSpecializationList = new ArrayList<>();
+        StudentSpecializationRepository repository1 = new StudentSpecializationRepositoryIMPL();
+        studentSpecializationList = repository1.getStudentSpecializationByStudentId(id);
+        List<Specialization> specializations = new ArrayList<>();
+        for (StudentSpecialization studentSpecialization : studentSpecializationList) {
+            UUID specializationId = studentSpecialization.getSpecialization();
+            SpecializationRepository specializationRepository = new SpecializationRepositoryIMPL();
+           String name = specializationRepository.getNameById(specializationId);
+            Specialization specialization = new Specialization(specializationId, name);
+            specializations.add(specialization);
+        }
+        student.setSpecializationsStudent(specializations);
         return student;
     }
 }

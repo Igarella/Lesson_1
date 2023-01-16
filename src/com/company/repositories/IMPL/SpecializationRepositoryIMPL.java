@@ -44,4 +44,14 @@ public class SpecializationRepositoryIMPL implements SpecializationRepository {
         }
         return specializationList;
     }
+
+    @Override
+    public String getNameById(UUID specializationId) {
+        return getAllSpecializations()
+                .stream()
+                .filter(e -> e.getId().equals(specializationId))
+                .map(e -> e.getNameSpecialization())
+                .findFirst()
+                .get();
+    }
 }

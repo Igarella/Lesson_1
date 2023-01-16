@@ -11,6 +11,7 @@ public class Student implements Serializable {
     private List<Phone> phoneStudent;
     private List<Email> emailsStudent;
     private List<Specialization> specializationsStudent;
+    private List<StudentSpecialization> studentSpecializationList;
 
     public List<StudentSpecialization> getStudentSpecializationList() {
         return studentSpecializationList;
@@ -20,7 +21,7 @@ public class Student implements Serializable {
         this.studentSpecializationList = studentSpecializationList;
     }
 
-    private List<StudentSpecialization> studentSpecializationList;
+
 
     public List<Specialization> getSpecializationsStudent() {
         return specializationsStudent;

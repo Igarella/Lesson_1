@@ -52,6 +52,7 @@ public class Menu {
                     Phone studentPhone = new Phone(prefix, phone, typePhone, studentId);
                     PhoneService service = new PhoneServiceIMPL();
                     service.addPhone(studentPhone);
+
                 }
                 case 5 -> {
                     System.out.println("Введите id студента");

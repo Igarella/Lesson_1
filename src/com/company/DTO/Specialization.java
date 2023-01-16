@@ -3,7 +3,8 @@ package com.company.DTO;
 import java.util.UUID;
 
 public class Specialization {
-    private final UUID id; //Final because of Idea
+
+    private UUID id;
     private final String nameSpecialization;
 
     public Specialization(String nameSpecialization) {
@@ -23,6 +24,7 @@ public class Specialization {
     public UUID getId() {
         return id;
     }
+
 
     @Override
     public String toString() {
