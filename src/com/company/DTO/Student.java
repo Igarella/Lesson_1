@@ -10,25 +10,25 @@ public class Student implements Serializable {
     private String secondName;
     private List<Phone> phoneStudent;
     private List<Email> emailsStudent;
-    private List<Specialization> specializationsStudent;
-    private List<StudentSpecialization> studentSpecializationList;
+    private List<Specialization> specializations;
+//    private List<StudentSpecialization> studentSpecializationList;
 
-    public List<StudentSpecialization> getStudentSpecializationList() {
-        return studentSpecializationList;
+//    public List<StudentSpecialization> getStudentSpecializationList() {
+//        return studentSpecializationList;
+//    }
+//
+//    public void setStudentSpecializationList(List<StudentSpecialization> studentSpecializationList) {
+//        this.studentSpecializationList = studentSpecializationList;
+//    }
+
+
+
+    public List<Specialization> getSpecializations() {
+        return specializations;
     }
 
-    public void setStudentSpecializationList(List<StudentSpecialization> studentSpecializationList) {
-        this.studentSpecializationList = studentSpecializationList;
-    }
-
-
-
-    public List<Specialization> getSpecializationsStudent() {
-        return specializationsStudent;
-    }
-
-    public void setSpecializationsStudent(List<Specialization> specializationsStudent) {
-        this.specializationsStudent = specializationsStudent;
+    public void setSpecializations(List<Specialization> specializations) {
+        this.specializations = specializations;
     }
 
     public List<Phone> getPhoneStudent() {
@@ -92,7 +92,7 @@ public class Student implements Serializable {
                 ", secondName='" + secondName + '\'' +
                 ", phoneStudent=" + phoneStudent +
                 ", emailsStudent=" + emailsStudent +
-                ", specializationsStudent=" + specializationsStudent +
+                ", specializationsStudent=" + specializations +
                 '}';
     }
 }

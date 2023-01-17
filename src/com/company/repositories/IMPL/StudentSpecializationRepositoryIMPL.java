@@ -14,8 +14,8 @@ public class StudentSpecializationRepositoryIMPL implements StudentSpecializatio
     public void addSpecializationStudent(StudentSpecialization studentSpecialization) {
         try {
             FileWriter writer = new FileWriter("resources/StudentSpecializations.txt",true);
-            writer.write(studentSpecialization.getId() + "," + studentSpecialization.getSpecialization()
-                    + "," + studentSpecialization.getStudentId() + "\n");
+            writer.write(studentSpecialization.getId() + "," + studentSpecialization.getStudentId()
+                    + "," + studentSpecialization.getSpecialization() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -26,7 +26,7 @@ public class StudentSpecializationRepositoryIMPL implements StudentSpecializatio
     public List<StudentSpecialization> getStudentSpecializationByStudentId(UUID studentId) {
         List<StudentSpecialization> studentSpecializationList = new ArrayList<>();
         try {
-            File file = new File("resources/SdudentSpecializations.txt");
+            File file = new File("resources/StudentSpecializations.txt");
             //создаем объект FileReader для объекта File
             FileReader fr = new FileReader(file);
             //создаем BufferedReader с существующего FileReader для построчного считывания

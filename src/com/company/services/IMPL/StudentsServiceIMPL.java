@@ -48,22 +48,23 @@ public class StudentsServiceIMPL implements StudentsService {
         Student student = repository.getStudentById(id);
         PhonesRepository phonesRepository = new PhoneRepositoryIMPL();
         List<Phone> phoneList = phonesRepository.getPhoneByStudentId(id);
-        student.setPhoneStudent(phoneList);
+//        student.setPhoneStudent(phoneList);
         EmailRepository emailRepository = new EmailRepositoryIMPL();
         List<Email> emailList = emailRepository.getEmailByStudentId(id);
-        student.setEmailsStudent(emailList);
-        List<StudentSpecialization> studentSpecializationList = new ArrayList<>();
+//        student.setEmailsStudent(emailList);
         StudentSpecializationRepository repository1 = new StudentSpecializationRepositoryIMPL();
-        studentSpecializationList = repository1.getStudentSpecializationByStudentId(id);
+        List<StudentSpecialization> studentSpecializationList = repository1.getStudentSpecializationByStudentId(id);//достал лист ВСЕХ специализаций
         List<Specialization> specializations = new ArrayList<>();
         for (StudentSpecialization studentSpecialization : studentSpecializationList) {
-            UUID specializationId = studentSpecialization.getSpecialization();
-            SpecializationRepository specializationRepository = new SpecializationRepositoryIMPL();
-           String name = specializationRepository.getNameById(specializationId);
-            Specialization specialization = new Specialization(specializationId, name);
+            UUID specializationId = studentSpecialization.getSpecialization(); //присвоение каждой специализации айди
+            SpecializationRepository specializationRepository = new SpecializationRepositoryIMPL();// идем в репозиторий специализаций
+           String name = specializationRepository.getNameById(specializationId); // берем имя специализации по айди
+            Specialization specialization = new Specialization(specializationId, name); //создаем сп
             specializations.add(specialization);
         }
-        student.setSpecializationsStudent(specializations);
+        student.setSpecializations(specializations);
         return student;
     }
 }
+
+//todo почему мы в этом методе присваем студенту дополнительные поля?

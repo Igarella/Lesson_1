@@ -1,13 +1,7 @@
 package com.company.services;
 
-import com.company.DTO.Email;
-import com.company.DTO.Phone;
-import com.company.DTO.Specialization;
-import com.company.DTO.Student;
-import com.company.services.IMPL.EmailServiceIMPL;
-import com.company.services.IMPL.PhoneServiceIMPL;
-import com.company.services.IMPL.SpecializationServiceIMPL;
-import com.company.services.IMPL.StudentsServiceIMPL;
+import com.company.DTO.*;
+import com.company.services.IMPL.*;
 
 import java.util.Scanner;
 import java.util.UUID;
@@ -73,7 +67,18 @@ public class Menu {
                     SpecializationService service = new SpecializationServiceIMPL();
                     service.getAllSpecializations().forEach(System.out::println);
                 }
-                case 8 -> {
+                case 71 -> {
+                    System.out.println("Введите id студента");
+                    UUID studentIdForSpecialization = UUID.fromString(in.next());
+                    System.out.println("Введите id специализации");
+                    UUID specializationId = UUID.fromString(in.next());
+                    StudentSpecializationService service = new StudentSpecializationServiceIMPL();
+                    StudentSpecialization studentSpecialization =
+                            new StudentSpecialization(studentIdForSpecialization, specializationId);
+                    service.addSpecializationStudent(studentSpecialization);
+
+                }
+                    case 8 -> {
                     System.out.println("Введите название специализации");
                     String specializationName = in.next();
                     Specialization specialization = new Specialization(specializationName);
