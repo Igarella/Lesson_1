@@ -85,6 +85,18 @@ public class Menu {
                     SpecializationService service = new SpecializationServiceIMPL();
                     service.addSpecialization(specialization);
                 }
+                case 81 -> {
+                    System.out.println("Введите id студента");
+                    UUID studentIdForSpecialization = UUID.fromString(in.next());
+                    System.out.println("Введите id специализации");
+                    UUID specializationId = UUID.fromString(in.next());
+                    System.out.println("Введите оценку");
+                    int mark = in.nextInt();
+                    AssessmentSpecialization assessmentSpecialization =
+                            new AssessmentSpecialization(studentIdForSpecialization, specializationId, mark);
+                    AssessmentService service = new AssessmentServiceIMPL();
+                    service.addAssessment(assessmentSpecialization);
+                }
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");
             }

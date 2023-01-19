@@ -12,6 +12,7 @@ public class MenuProgram {
         System.out.println("7 – Просмотр списка специализаций");
         System.out.println("71 – Добавление специализации студенту");
         System.out.println("8 – Добавление специализации");
+        System.out.println("81 – Добавление оценки студенту");
         System.out.println("0 – Возврат в главное меню");
         System.out.println("9 – ВЫХОД ");
     }

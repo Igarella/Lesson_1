@@ -1,6 +1,5 @@
 package com.company.DTO;
 
-import java.util.List;
 import java.util.UUID;
 
 public class StudentSpecialization {
@@ -30,10 +29,6 @@ public class StudentSpecialization {
 
     public UUID getStudentId() {
         return studentId;
-    }
-
-    public void setStudentId(UUID studentId) {
-        this.studentId = studentId;
     }
 
     public UUID getSpecialization() {

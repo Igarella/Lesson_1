@@ -1,7 +1,9 @@
 package com.company.DTO;
 
 import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 public class Student implements Serializable {
@@ -11,7 +13,17 @@ public class Student implements Serializable {
     private List<Phone> phoneStudent;
     private List<Email> emailsStudent;
     private List<Specialization> specializations;
-//    private List<StudentSpecialization> studentSpecializationList;
+    private Map<String, List<Integer>> marksInSubjects = new HashMap<>();
+
+    public Map<String, List<Integer>> getMarksInSubjects() {
+        return marksInSubjects;
+    }
+
+    public void setMarksInSubjects(String specializationName, List<Integer> marks) {
+        marksInSubjects.keySet().forEach(e -> e = "hello");
+        System.out.println(marksInSubjects);
+    }
+    //    private List<StudentSpecialization> studentSpecializationList;
 
 //    public List<StudentSpecialization> getStudentSpecializationList() {
 //        return studentSpecializationList;
@@ -92,7 +104,8 @@ public class Student implements Serializable {
                 ", secondName='" + secondName + '\'' +
                 ", phoneStudent=" + phoneStudent +
                 ", emailsStudent=" + emailsStudent +
-                ", specializationsStudent=" + specializations +
+                ", specializations=" + specializations +
+                ", marksInSubjects=" + marksInSubjects +
                 '}';
     }
 }
