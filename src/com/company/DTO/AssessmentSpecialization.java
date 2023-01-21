@@ -10,7 +10,7 @@ public class AssessmentSpecialization {
     private UUID studentId;
     private UUID specialization;
     private int mark;
-    private Map<String, List<Integer>> specializationsAnsMarks = new HashMap<>();
+//    private Map<String, List<Integer>> specializationsAnsMarks = new HashMap<>();
 
     public void setId(UUID id) {
         this.id = id;
@@ -26,14 +26,6 @@ public class AssessmentSpecialization {
 
     public void setMark(int mark) {
         this.mark = mark;
-    }
-
-    public Map<String, List<Integer>> getSpecializationsAnsMarks() {
-        return specializationsAnsMarks;
-    }
-
-    public void setSpecializationsAnsMarks(Map<String, List<Integer>> specializationsAnsMarks) {
-        this.specializationsAnsMarks = specializationsAnsMarks;
     }
 
     public AssessmentSpecialization(UUID studentId, UUID specialization, int mark) {

@@ -1,16 +1,20 @@
 package com.company.DTO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class StudentSpecialization {
     private UUID id;
     private UUID studentId;
     private UUID specialization;
+    private List<Assessment> marks = new ArrayList<>();
 
     public StudentSpecialization(UUID id, UUID studentId, UUID specialization) {
         this.id = id;
         this.studentId = studentId;
         this.specialization = specialization;
+
     }
 
     public StudentSpecialization(UUID studentId, UUID specialization) {
@@ -37,6 +41,10 @@ public class StudentSpecialization {
 
     public void setSpecialization(UUID specialization) {
         this.specialization = specialization;
+    }
+
+    public void setMarks(Assessment assessment){
+        marks.add(assessment);
     }
 
     @Override

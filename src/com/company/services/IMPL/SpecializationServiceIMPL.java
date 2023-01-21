@@ -25,4 +25,10 @@ public class SpecializationServiceIMPL implements SpecializationService {
     public void deleteSpecialization(UUID uuid) {
 
     }
+
+    @Override
+    public Specialization getSpecializationById(UUID specializationId) {
+        SpecializationRepository repository = new SpecializationRepositoryIMPL();
+        return repository.getSpecializationById(specializationId);
+    }
 }

@@ -87,19 +87,53 @@ public class Menu {
                 }
                 case 81 -> {
                     System.out.println("Введите id студента");
-                    UUID studentIdForSpecialization = UUID.fromString(in.next());
+                    UUID studentIdForAssessment = UUID.fromString(in.next());
                     System.out.println("Введите id специализации");
                     UUID specializationId = UUID.fromString(in.next());
                     System.out.println("Введите оценку");
                     int mark = in.nextInt();
-                    AssessmentSpecialization assessmentSpecialization =
-                            new AssessmentSpecialization(studentIdForSpecialization, specializationId, mark);
-                    AssessmentService service = new AssessmentServiceIMPL();
-                    service.addAssessment(assessmentSpecialization);
+                    StudentSpecializationService service = new StudentSpecializationServiceIMPL();
+                    StudentSpecialization studentSpecialization = service.getStudentSpecializationsById(studentIdForAssessment, specializationId);
+                    Assessment assessment = new Assessment(studentSpecialization.getId(), mark);
+                    studentSpecialization.setMarks(assessment);
+                    AssessmentService assessmentService = new AssessmentServiceIMPL();
+                    assessmentService.addAssessment(assessment);
+
+
+//                    System.out.println("Введите id студента");
+//                    UUID studentIdForSpecialization = UUID.fromString(in.next());
+//                    System.out.println("Введите id специализации");
+//                    UUID specializationId = UUID.fromString(in.next());
+//                    System.out.println("Введите оценку");
+//                    int mark = in.nextInt();
+//                    AssessmentSpecialization assessmentSpecialization =
+//                            new AssessmentSpecialization(studentIdForSpecialization, specializationId, mark);
+//                    AssessmentService service = new AssessmentServiceIMPL();
+//                    service.addAssessment(assessmentSpecialization);
                 }
+                case 9 -> {
+                    System.out.println("Введите id специализации");
+                    UUID specializationId = UUID.fromString(in.next());
+                    System.out.println("Введите название темы");
+                    String topicName = in.next();
+                    Topic topic = new Topic(topicName, specializationId);
+                    TopicsOfSpecializationService service = new TopicsOfSpecializationIMPL();
+                    service.addTopic(topic);
+                    SpecializationService specializationService = new SpecializationServiceIMPL();
+                    Specialization specialization = specializationService.getSpecializationById(specializationId);
+                    specialization.setTopics(topic);
+                }
+//                case 91 -> {
+//                    System.out.println("Введите id специализации");
+//                    UUID specializationId = UUID.fromString(in.next());
+//                    SpecializationService service = new SpecializationServiceIMPL();
+//                    Specialization specialization = service.getSpecializationById(specializationId);
+//                    specialization.getTopics();
+//                }
+
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");
             }
-        } while (menu != 9);
+        } while (menu != 90);
     }
 }

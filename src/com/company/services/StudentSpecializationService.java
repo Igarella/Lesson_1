@@ -13,6 +13,7 @@ public interface StudentSpecializationService {
 
     List<StudentSpecialization> getAllStudentSpecializations();
 
-    List<StudentSpecialization> getStudentSpecializationsById(UUID uuid);
+    StudentSpecialization getStudentSpecializationsById(UUID studentId, UUID specializationId);
+
 
 }

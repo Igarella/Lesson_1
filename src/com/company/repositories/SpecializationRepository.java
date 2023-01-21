@@ -11,4 +11,6 @@ public interface SpecializationRepository {
     List<Specialization> getAllSpecializations();
 
     String getNameById(UUID specializationId);
+
+    Specialization getSpecializationById(UUID specializationId);
 }

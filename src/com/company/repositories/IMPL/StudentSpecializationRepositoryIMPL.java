@@ -1,6 +1,5 @@
 package com.company.repositories.IMPL;
 
-import com.company.DTO.Phone;
 import com.company.DTO.StudentSpecialization;
 import com.company.repositories.StudentSpecializationRepository;
 
@@ -8,6 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class StudentSpecializationRepositoryIMPL implements StudentSpecializationRepository {
     @Override
@@ -23,7 +23,16 @@ public class StudentSpecializationRepositoryIMPL implements StudentSpecializatio
     }
 
     @Override
-    public List<StudentSpecialization> getStudentSpecializationByStudentId(UUID studentId) {
+    public StudentSpecialization getStudentSpecializationById(UUID studentId, UUID specializationId) {
+        return getAllStudentSpecializations()
+                .stream()
+                .filter(e -> e.getSpecialization().equals(specializationId) && e.getStudentId().equals(studentId))
+                .findFirst()
+                .get();
+    }
+
+    @Override
+    public List<StudentSpecialization> getAllStudentSpecializations() {
         List<StudentSpecialization> studentSpecializationList = new ArrayList<>();
         try {
             File file = new File("resources/StudentSpecializations.txt");

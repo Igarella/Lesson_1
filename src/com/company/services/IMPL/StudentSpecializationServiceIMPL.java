@@ -18,11 +18,14 @@ public class StudentSpecializationServiceIMPL implements StudentSpecializationSe
 
     @Override
     public List<StudentSpecialization> getAllStudentSpecializations() {
-        return null;
+        StudentSpecializationRepository specializationRepository = new StudentSpecializationRepositoryIMPL();
+        specializationRepository.getAllStudentSpecializations();
+        return specializationRepository.getAllStudentSpecializations();
     }
 
     @Override
-    public List<StudentSpecialization> getStudentSpecializationsById(UUID uuid) {
-        return null;
+    public StudentSpecialization getStudentSpecializationsById(UUID studentId, UUID specializationId) {
+        StudentSpecializationRepository repository = new StudentSpecializationRepositoryIMPL();
+        return repository.getStudentSpecializationById(studentId, specializationId);
     }
 }

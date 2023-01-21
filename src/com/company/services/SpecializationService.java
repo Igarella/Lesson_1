@@ -13,4 +13,6 @@ public interface SpecializationService {
     void addSpecialization(Specialization specialization);
 
     void deleteSpecialization(UUID uuid);
+
+    Specialization getSpecializationById(UUID specializationId);
 }

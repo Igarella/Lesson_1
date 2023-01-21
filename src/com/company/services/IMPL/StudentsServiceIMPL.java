@@ -50,8 +50,8 @@ public class StudentsServiceIMPL implements StudentsService {
         EmailRepository emailRepository = new EmailRepositoryIMPL();
         List<Email> emailList = emailRepository.getEmailByStudentId(id);
         student.setEmailsStudent(emailList);
-        StudentSpecializationRepository repository1 = new StudentSpecializationRepositoryIMPL();
-        List<StudentSpecialization> studentSpecializationList = repository1.getStudentSpecializationByStudentId(id);//достал лист ВСЕХ специализаций
+        StudentSpecializationRepository studentSpecializationRepository = new StudentSpecializationRepositoryIMPL();
+        List<StudentSpecialization> studentSpecializationList = studentSpecializationRepository.getAllStudentSpecializations();//достал лист ВСЕХ специализаций
         List<Specialization> specializations = new ArrayList<>();
         for (StudentSpecialization studentSpecialization : studentSpecializationList) {
             UUID specializationId = studentSpecialization.getSpecialization();
@@ -60,7 +60,6 @@ public class StudentsServiceIMPL implements StudentsService {
             Specialization specialization = new Specialization(specializationId, name);
             specializations.add(specialization);
         }
-
         student.setSpecializations(specializations);
         return student;
     }
