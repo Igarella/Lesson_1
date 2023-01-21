@@ -130,7 +130,12 @@ public class Menu {
 //                    Specialization specialization = service.getSpecializationById(specializationId);
 //                    specialization.getTopics();
 //                }
-
+                case 92 -> {
+                    System.out.println("Введите id специализации");
+                    UUID specializationId = UUID.fromString(in.next());
+                    TopicsOfSpecializationService service = new TopicsOfSpecializationIMPL();
+                    service.getTopicsBySpecializationId(specializationId).forEach(System.out::println);
+                }
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");
             }

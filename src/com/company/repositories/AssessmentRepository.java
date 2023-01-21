@@ -1,7 +1,6 @@
 package com.company.repositories;
 
 import com.company.DTO.Assessment;
-import com.company.DTO.AssessmentSpecialization;
 
 import java.util.List;
 import java.util.UUID;
