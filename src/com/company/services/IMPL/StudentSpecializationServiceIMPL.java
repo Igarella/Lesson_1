@@ -24,8 +24,15 @@ public class StudentSpecializationServiceIMPL implements StudentSpecializationSe
     }
 
     @Override
-    public StudentSpecialization getStudentSpecializationsById(UUID studentId, UUID specializationId) {
+    public StudentSpecialization getStudentSpecializationsByStudentId(UUID studentId) {
         StudentSpecializationRepository repository = new StudentSpecializationRepositoryIMPL();
-        return repository.getStudentSpecializationById(studentId, specializationId);
+        return repository.getStudentSpecializationByStudentId(studentId);
     }
+
+    @Override
+    public StudentSpecialization getStudentSpecializationsByStudentAndSpecializationId(UUID studentId, UUID specializationId) {
+        StudentSpecializationRepository repository = new StudentSpecializationRepositoryIMPL();
+        return repository.getStudentSpecializationByStudentId(studentId, specializationId);
+    }
+
 }

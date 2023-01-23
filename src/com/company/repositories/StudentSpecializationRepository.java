@@ -8,10 +8,12 @@ import java.util.UUID;
 public interface StudentSpecializationRepository {
     void addSpecializationStudent(StudentSpecialization studentSpecialization);
 
-    StudentSpecialization getStudentSpecializationById(UUID studentId, UUID specializationId);
+    StudentSpecialization getStudentSpecializationByStudentId(UUID studentId);
 
 
     List<StudentSpecialization> getAllStudentSpecializations();
+
+    StudentSpecialization getStudentSpecializationByStudentId(UUID studentId, UUID specializationId);
 
 }
 

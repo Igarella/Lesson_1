@@ -16,16 +16,11 @@ public class Assessment {
         this.topicId = topicId;
     }
 
-    public Assessment(UUID studentSpecializationId, int mark) {
+    public Assessment(UUID studentSpecializationId, int mark, UUID topicId) {
         this.id = UUID.randomUUID();
         this.studentSpecializationId = studentSpecializationId;
         this.mark = mark;
-    }
-
-    public Assessment(UUID id, UUID studentSpecializationId, int mark) {
-        this.id = id;
-        this.studentSpecializationId = studentSpecializationId;
-        this.mark = mark;
+        this.topicId = topicId;
     }
 
     public Assessment(UUID id, UUID studentSpecializationId, int mark, UUID topicId) {

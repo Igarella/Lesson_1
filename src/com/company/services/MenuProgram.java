@@ -4,6 +4,7 @@ public class MenuProgram {
      static void menuProgram() {
         System.out.println("Меню программы:");
         System.out.println("1 – Просмотр списка студентов");
+        System.out.println("11 – Просмотр списка удаленных студентов");
         System.out.println("2 – Добавление студента");
         System.out.println("3 – Удаление студента");
         System.out.println("4 – Добавление телефона студенту");
@@ -13,6 +14,7 @@ public class MenuProgram {
         System.out.println("71 – Добавление специализации студенту");
         System.out.println("8 – Добавление специализации");
         System.out.println("81 – Добавление оценки студенту");
+        System.out.println("82 – Прсмотр оценок студента по предмету");
         System.out.println("9 - Добавление темы специализации");
         System.out.println("91 - Просмотр специализации по id");
         System.out.println("92 - Просмотр тем по специализации");

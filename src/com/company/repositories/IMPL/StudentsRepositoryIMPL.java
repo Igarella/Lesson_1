@@ -7,6 +7,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class StudentsRepositoryIMPL implements StudentsRepository {
 
@@ -24,7 +25,7 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] studentFromFile = line.split(",");
-                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2]);
+                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2], Boolean.parseBoolean(studentFromFile[3]));
                 studentList.add(student);
                 // считываем остальные строки в цикле
                 line = reader.readLine();
@@ -35,17 +36,11 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
         return studentList;
     }
 
-
-    @Override
-    public void writeStudent(List<Student> students) {
-
-    }
-
     @Override
     public void addStudent(Student student) {
         try {
             FileWriter writer = new FileWriter("resources/Students.txt",true);
-                writer.write(student.getId() + "," + student.getFirstName() + "," + student.getSecondName() + "\n");
+                writer.write(student.getId() + "," + student.getFirstName() + "," + student.getSecondName() + "," + student.isArchived() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -54,6 +49,23 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
 
     @Override
     public void deleteStudent(UUID uuid) {
+        List<Student> studentList = getAllStudents();
+        studentList
+                .stream()
+                .filter(e -> e.getId().equals(uuid))
+                .findFirst()
+                .get().setArchived(true);
+        try {
+            FileWriter writer = new FileWriter("resources/Students.txt");
+            writer.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (Student student : studentList) {
+            addStudent(student);
+        }
+
+
     }
 
     @Override
@@ -63,6 +75,14 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
                 .filter(e-> e.getId().equals(id))
                 .findFirst()
                 .get();
+    }
+
+    @Override
+    public List<Student> getDeletedStudents() {
+        return getAllStudents()
+                .stream()
+                .filter(Student::isArchived)
+                .collect(Collectors.toList());
     }
 }
 

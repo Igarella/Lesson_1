@@ -1,39 +1,25 @@
 package com.company.DTO;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class Student implements Serializable {
     private UUID id;
     private String firstName;
     private String secondName;
+    private boolean archived = false;
     private List<Phone> phoneStudent;
     private List<Email> emailsStudent;
     private List<Specialization> specializations;
-    private Map<String, List<Integer>> marksInSubjects = new HashMap<>();
+    private List<Assessment> assessments = new ArrayList<>();
 
-    public Map<String, List<Integer>> getMarksInSubjects() {
-        return marksInSubjects;
+    public List<Assessment> getAssessments() {
+        return assessments;
     }
 
-    public void setMarksInSubjects(String specializationName, List<Integer> marks) {
-        marksInSubjects.keySet().forEach(e -> e = "hello");
-        System.out.println(marksInSubjects);
+    public void setAssessments(List<Assessment> assessments) {
+        this.assessments = assessments;
     }
-    //    private List<StudentSpecialization> studentSpecializationList;
-
-//    public List<StudentSpecialization> getStudentSpecializationList() {
-//        return studentSpecializationList;
-//    }
-//
-//    public void setStudentSpecializationList(List<StudentSpecialization> studentSpecializationList) {
-//        this.studentSpecializationList = studentSpecializationList;
-//    }
-
-
 
     public List<Specialization> getSpecializations() {
         return specializations;
@@ -83,6 +69,14 @@ public class Student implements Serializable {
         this.secondName = secondName;
     }
 
+    public boolean isArchived() {
+        return archived;
+    }
+
+    public void setArchived(boolean archived) {
+        this.archived = archived;
+    }
+
     public Student(UUID id, String firstName, String secondName) {
         this.id = id;
         this.firstName = firstName;
@@ -95,6 +89,19 @@ public class Student implements Serializable {
         this.secondName = secondName;
     }
 
+    public Student(String firstName, String secondName, boolean archived) {
+        this.id = UUID.randomUUID();
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.archived = archived;
+    }
+
+    public Student(UUID id, String firstName, String secondName, boolean archived) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.archived = archived;
+    }
 
     @Override
     public String toString() {
@@ -102,10 +109,11 @@ public class Student implements Serializable {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +
+                ", archived=" + archived +
                 ", phoneStudent=" + phoneStudent +
                 ", emailsStudent=" + emailsStudent +
                 ", specializations=" + specializations +
-                ", marksInSubjects=" + marksInSubjects +
+                ", assessments=" + assessments +
                 '}';
     }
 }

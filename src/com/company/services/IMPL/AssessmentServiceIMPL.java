@@ -17,8 +17,20 @@ public class AssessmentServiceIMPL implements AssessmentService {
     }
 
     @Override
-    public List<Assessment> getAssessmentsOfTopic(UUID studentId, UUID topicId) {
+    public List<Assessment> getAssessmentsOfTopic(UUID studentSpecializationId, UUID topicId) {
         AssessmentRepository repository = new AssessmentRepositoryIMPL();
-        return repository.getAssessmentsOfTopic(studentId, topicId);
+        return repository.getAssessmentsOfTopic(studentSpecializationId, topicId);
+    }
+
+    @Override
+    public List<Assessment> getAssessmentsOfSpecializationStudent(UUID studentSpecializationId) {
+        AssessmentRepository repository = new AssessmentRepositoryIMPL();
+        return repository.getAssessmentsOfSpecializationStudent(studentSpecializationId);
+    }
+
+    @Override
+    public List<Assessment> getAllAssessments() {
+        AssessmentRepository repository = new AssessmentRepositoryIMPL();
+        return repository.getAllAssessments();
     }
 }

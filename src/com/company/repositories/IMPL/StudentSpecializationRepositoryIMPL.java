@@ -23,10 +23,10 @@ public class StudentSpecializationRepositoryIMPL implements StudentSpecializatio
     }
 
     @Override
-    public StudentSpecialization getStudentSpecializationById(UUID studentId, UUID specializationId) {
+    public StudentSpecialization getStudentSpecializationByStudentId(UUID studentId) {
         return getAllStudentSpecializations()
                 .stream()
-                .filter(e -> e.getSpecialization().equals(specializationId) && e.getStudentId().equals(studentId))
+                .filter(e -> e.getStudentId().equals(studentId))
                 .findFirst()
                 .get();
     }
@@ -54,6 +54,15 @@ public class StudentSpecializationRepositoryIMPL implements StudentSpecializatio
             e.printStackTrace();
         }
         return studentSpecializationList;
+    }
+
+    @Override
+    public StudentSpecialization getStudentSpecializationByStudentId(UUID studentId, UUID specializationId) {
+        return getAllStudentSpecializations()
+                .stream()
+                .filter(e -> e.getStudentId().equals(studentId) && e.getSpecialization().equals(specializationId))
+                .findFirst()
+                .get();
     }
 
 

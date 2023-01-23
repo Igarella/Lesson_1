@@ -18,6 +18,10 @@ public class Menu {
                     StudentsService studentsService = new StudentsServiceIMPL();
                     studentsService.getAllStudents().forEach(System.out::println);
                 }
+                case 11 -> {
+                    StudentsService studentsService = new StudentsServiceIMPL();
+                    studentsService.getDeletedStudents().forEach(System.out::println);
+                }
                 case 2 -> {
                     System.out.println("Введите имя студента");
                     String name = in.next();
@@ -90,26 +94,28 @@ public class Menu {
                     UUID studentIdForAssessment = UUID.fromString(in.next());
                     System.out.println("Введите id специализации");
                     UUID specializationId = UUID.fromString(in.next());
+                    System.out.println("Введите id темы");
+                    UUID topicId = UUID.fromString(in.next());
                     System.out.println("Введите оценку");
                     int mark = in.nextInt();
                     StudentSpecializationService service = new StudentSpecializationServiceIMPL();
-                    StudentSpecialization studentSpecialization = service.getStudentSpecializationsById(studentIdForAssessment, specializationId);
-                    Assessment assessment = new Assessment(studentSpecialization.getId(), mark);
-                    studentSpecialization.setMarks(assessment);
+                    StudentSpecialization studentSpecialization = service.getStudentSpecializationsByStudentId(studentIdForAssessment);
+                    Assessment assessment = new Assessment(studentSpecialization.getId(), mark, topicId);
                     AssessmentService assessmentService = new AssessmentServiceIMPL();
                     assessmentService.addAssessment(assessment);
-
-
-//                    System.out.println("Введите id студента");
-//                    UUID studentIdForSpecialization = UUID.fromString(in.next());
-//                    System.out.println("Введите id специализации");
-//                    UUID specializationId = UUID.fromString(in.next());
-//                    System.out.println("Введите оценку");
-//                    int mark = in.nextInt();
-//                    AssessmentSpecialization assessmentSpecialization =
-//                            new AssessmentSpecialization(studentIdForSpecialization, specializationId, mark);
-//                    AssessmentService service = new AssessmentServiceIMPL();
-//                    service.addAssessment(assessmentSpecialization);
+                }
+                case 82 -> {
+                    System.out.println("Введите id студента");
+                    UUID studentIdForAssessment = UUID.fromString(in.next());
+                    System.out.println("Введите id специализации");
+                    UUID specializationId = UUID.fromString(in.next());
+                    StudentSpecializationService service = new StudentSpecializationServiceIMPL();
+                    StudentSpecialization studentSpecialization = service.getStudentSpecializationsByStudentAndSpecializationId(studentIdForAssessment,specializationId);
+                    AssessmentService assessmentService = new AssessmentServiceIMPL();
+                    assessmentService.getAssessmentsOfSpecializationStudent(studentSpecialization.getId())
+                            .stream()
+                            .map(Assessment::getMark)
+                            .forEach(System.out::println);
                 }
                 case 9 -> {
                     System.out.println("Введите id специализации");

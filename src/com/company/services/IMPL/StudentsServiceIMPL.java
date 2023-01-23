@@ -5,7 +5,6 @@ import com.company.repositories.*;
 import com.company.repositories.IMPL.*;
 import com.company.services.StudentsService;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -18,12 +17,6 @@ public class StudentsServiceIMPL implements StudentsService {
     }
 
     @Override
-    public void writeStudent(List<Student> studentList) {
-        StudentsRepository repository = new StudentsRepositoryIMPL();
-        repository.writeStudent(studentList);
-    }
-
-    @Override
     public void addStudent(Student student) {
         StudentsRepository repository = new StudentsRepositoryIMPL();
         repository.addStudent(student);
@@ -32,11 +25,7 @@ public class StudentsServiceIMPL implements StudentsService {
     @Override
     public void deleteStudent(UUID uuid) {
         StudentsRepository repository = new StudentsRepositoryIMPL();
-        try {
-            repository.deleteStudent(uuid);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        repository.deleteStudent(uuid);
     }
 
 
@@ -62,6 +51,12 @@ public class StudentsServiceIMPL implements StudentsService {
         }
         student.setSpecializations(specializations);
         return student;
+    }
+
+    @Override
+    public List<Student> getDeletedStudents() {
+        StudentsRepository repository = new StudentsRepositoryIMPL();
+        return repository.getDeletedStudents();
     }
 }
 

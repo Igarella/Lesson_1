@@ -1,7 +1,5 @@
 package com.company.services;
 
-import com.company.DTO.Specialization;
-import com.company.DTO.Student;
 import com.company.DTO.StudentSpecialization;
 
 import java.util.List;
@@ -13,7 +11,11 @@ public interface StudentSpecializationService {
 
     List<StudentSpecialization> getAllStudentSpecializations();
 
-    StudentSpecialization getStudentSpecializationsById(UUID studentId, UUID specializationId);
+    StudentSpecialization getStudentSpecializationsByStudentId(UUID studentId);
+
+    StudentSpecialization getStudentSpecializationsByStudentAndSpecializationId(UUID studentId, UUID specializationId);
+
+
 
 
 }
