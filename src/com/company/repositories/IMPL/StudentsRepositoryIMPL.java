@@ -40,7 +40,7 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
     public void addStudent(Student student) {
         try {
             FileWriter writer = new FileWriter("resources/Students.txt",true);
-                writer.write(student.getId() + "," + student.getFirstName() + "," + student.getSecondName() + "," + student.isArchived() + "\n");
+                writer.write(student.getId() + "," + student.getFirstName() + "," + student.getSecondName() + "," + student.getBirthday() + "," + student.isArchived() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

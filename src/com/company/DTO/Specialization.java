@@ -5,44 +5,73 @@ import java.util.List;
 import java.util.UUID;
 
 public class Specialization {
+    private UUID specializationId;
+    private UUID groupId;
+    private UUID facultyId;
+    private String specializationName;
+    private List<Group> groupsOnSpecialization = new ArrayList<>();
 
-    private UUID id;
-    private final String nameSpecialization;
-    private List<Topic> topics = new ArrayList<>();
-
-    public List<Topic> getTopics() {
-        return topics;
+    public Specialization(UUID groupId, UUID facultyId,String specializationName) {
+        this.specializationId = UUID.randomUUID();
+        this.groupId = groupId;
+        this.facultyId = facultyId;
+        this.specializationName = specializationName;
     }
 
-    public void setTopics(Topic topic) {
-        this.topics.add(topic);
+    public Specialization(UUID specializationId, UUID groupId, UUID facultyId, String specializationName) {
+        this.specializationId = specializationId;
+        this.groupId = groupId;
+        this.facultyId = facultyId;
+        this.specializationName = specializationName;
     }
 
-    public Specialization(String nameSpecialization) {
-        this.id = UUID.randomUUID();
-        this.nameSpecialization = nameSpecialization;
+    public UUID getSpecializationId() {
+        return specializationId;
     }
 
-    public Specialization(UUID id, String nameSpecialization) {
-        this.id = id;
-        this.nameSpecialization = nameSpecialization;
+    public void setSpecializationId(UUID specializationId) {
+        this.specializationId = specializationId;
     }
 
-    public String getNameSpecialization() {
-        return nameSpecialization;
+    public UUID getGroupId() {
+        return groupId;
     }
 
-    public UUID getId() {
-        return id;
+    public void setGroupId(UUID groupId) {
+        this.groupId = groupId;
     }
 
+    public UUID getFacultyId() {
+        return facultyId;
+    }
+
+    public void setFacultyId(UUID facultyId) {
+        this.facultyId = facultyId;
+    }
+
+    public List<Group> getGroupsOnSpecialization() {
+        return groupsOnSpecialization;
+    }
+
+    public void setGroupsOnSpecialization(List<Group> groupsOnSpecialization) {
+        this.groupsOnSpecialization = groupsOnSpecialization;
+    }
+
+    public String getSpecializationName() {
+        return specializationName;
+    }
+
+    public void setSpecializationName(String specializationName) {
+        this.specializationName = specializationName;
+    }
 
     @Override
     public String toString() {
         return "Specialization{" +
-                "id=" + id +
-                ", nameSpecialization='" + nameSpecialization + '\'' +
-                ", topics=" + topics +
+                "specializationId=" + specializationId +
+                ", groupId=" + groupId +
+                ", facultyId=" + facultyId +
+                ", groupsOnSpecialization=" + groupsOnSpecialization +
                 '}';
     }
 }

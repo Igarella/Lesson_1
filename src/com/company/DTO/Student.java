@@ -8,9 +8,15 @@ public class Student implements Serializable {
     private String firstName;
     private String secondName;
     private boolean archived = false;
+    private UUID groupId;
+//    private UUID facultyId;
+    private String facultyName;
+    private String groupName;
+    private String birthday;
+    private String specializationName;
     private List<Phone> phoneStudent;
     private List<Email> emailsStudent;
-    private List<Specialization> specializations;
+    private List<Subject> subjects;
     private List<Assessment> assessments = new ArrayList<>();
 
     public List<Assessment> getAssessments() {
@@ -21,12 +27,12 @@ public class Student implements Serializable {
         this.assessments = assessments;
     }
 
-    public List<Specialization> getSpecializations() {
-        return specializations;
+    public List<Subject> getSpecializations() {
+        return subjects;
     }
 
-    public void setSpecializations(List<Specialization> specializations) {
-        this.specializations = specializations;
+    public void setSpecializations(List<Subject> subjects) {
+        this.subjects = subjects;
     }
 
     public List<Phone> getPhoneStudent() {
@@ -103,17 +109,84 @@ public class Student implements Serializable {
         this.archived = archived;
     }
 
+    public UUID getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(UUID groupId) {
+        this.groupId = groupId;
+    }
+
+    public List<Subject> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<Subject> subjects) {
+        this.subjects = subjects;
+    }
+
+//    public UUID getFacultyId() {
+//        return facultyId;
+//    }
+//
+//    public void setFacultyId(UUID facultyId) {
+//        this.facultyId = facultyId;
+//    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getFacultyName() {
+        return facultyName;
+    }
+
+    public void setFacultyName(String facultyName) {
+        this.facultyName = facultyName;
+    }
+
+    public String getGroupName() {
+        return groupName;
+    }
+
+    public void setGroupName(String groupName) {
+        this.groupName = groupName;
+    }
+
+    public String getSpecializationName() {
+        return specializationName;
+    }
+
+    public void setSpecializationName(String specializationName) {
+        this.specializationName = specializationName;
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Student{" +
+//                "id=" + id +
+//                ", firstName='" + firstName + '\'' +
+//                ", secondName='" + secondName + '\'' +
+//                ", archived=" + archived +
+//                ", groupId=" + groupId +
+//                ", phoneStudent=" + phoneStudent +
+//                ", emailsStudent=" + emailsStudent +
+//                ", subjects=" + subjects +
+//                ", assessments=" + assessments +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
-        return "Student{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", archived=" + archived +
-                ", phoneStudent=" + phoneStudent +
-                ", emailsStudent=" + emailsStudent +
-                ", specializations=" + specializations +
-                ", assessments=" + assessments +
-                '}';
+        return "Студент: " + getFirstName() + " " + getSecondName() + "," +
+                "дата рождения: " + getBirthday() + " ," +
+                "Специальность: " + getSpecializationName() + " ," +
+                "Группа: " + getGroupName() + " ," +
+                "Факультет: " + getFacultyName();
     }
 }

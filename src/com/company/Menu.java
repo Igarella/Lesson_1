@@ -1,6 +1,7 @@
-package com.company.services;
+package com.company;
 
 import com.company.DTO.*;
+import com.company.services.*;
 import com.company.services.IMPL.*;
 
 import java.util.Scanner;
@@ -27,10 +28,26 @@ public class Menu {
                     String name = in.next();
                     System.out.println("Введите фамилию");
                     String secondName = in.next();
+                    System.out.println("Введите день рождения");
+                    String birthday = in.next();
                     Student student = new Student(name, secondName);
+                    student.setBirthday(birthday);
                     StudentsService studentsService = new StudentsServiceIMPL();
                     studentsService.addStudent(student);
 //                    studentsService.getAllStudents().forEach(System.out::println);
+                }
+                case 21 -> {
+                    System.out.println("Введите id студента");
+                    UUID studentId = UUID.fromString(in.next());
+                    System.out.println("Введите id группы");
+                    UUID groupId = UUID.fromString(in.next());
+                    StudentGroup studentGroup = new StudentGroup(studentId, groupId);
+                    StudentGroupService service = new StudentGroupServiceImpl();
+                    service.addCurrentStudentToGroup(studentGroup);
+                }
+                case 22 -> {
+                    GroupService service = new GroupServiceIMPL();
+                    service.getAllGroups().forEach(System.out::println);
                 }
                 case 3 -> {
                     System.out.println("Введите id студента");
@@ -68,13 +85,13 @@ public class Menu {
                     service.addEmail(studentEmail);
                 }
                 case 7 -> {
-                    SpecializationService service = new SpecializationServiceIMPL();
-                    service.getAllSpecializations().forEach(System.out::println);
+                    SubjectService service = new SubjectServiceIMPL();
+                    service.getAllSubjects().forEach(System.out::println);
                 }
                 case 71 -> {
                     System.out.println("Введите id студента");
                     UUID studentIdForSpecialization = UUID.fromString(in.next());
-                    System.out.println("Введите id специализации");
+                    System.out.println("Введите id предмета");
                     UUID specializationId = UUID.fromString(in.next());
                     StudentSpecializationService service = new StudentSpecializationServiceIMPL();
                     StudentSpecialization studentSpecialization =
@@ -83,16 +100,16 @@ public class Menu {
 
                 }
                     case 8 -> {
-                    System.out.println("Введите название специализации");
+                    System.out.println("Введите название предмета");
                     String specializationName = in.next();
-                    Specialization specialization = new Specialization(specializationName);
-                    SpecializationService service = new SpecializationServiceIMPL();
-                    service.addSpecialization(specialization);
+                    Subject subject = new Subject(specializationName);
+                    SubjectService service = new SubjectServiceIMPL();
+                    service.addSubject(subject);
                 }
                 case 81 -> {
                     System.out.println("Введите id студента");
                     UUID studentIdForAssessment = UUID.fromString(in.next());
-                    System.out.println("Введите id специализации");
+                    System.out.println("Введите id предмета");
                     UUID specializationId = UUID.fromString(in.next());
                     System.out.println("Введите id темы");
                     UUID topicId = UUID.fromString(in.next());
@@ -107,7 +124,7 @@ public class Menu {
                 case 82 -> {
                     System.out.println("Введите id студента");
                     UUID studentIdForAssessment = UUID.fromString(in.next());
-                    System.out.println("Введите id специализации");
+                    System.out.println("Введите id предмета");
                     UUID specializationId = UUID.fromString(in.next());
                     StudentSpecializationService service = new StudentSpecializationServiceIMPL();
                     StudentSpecialization studentSpecialization = service.getStudentSpecializationsByStudentAndSpecializationId(studentIdForAssessment,specializationId);
@@ -118,29 +135,49 @@ public class Menu {
                             .forEach(System.out::println);
                 }
                 case 9 -> {
-                    System.out.println("Введите id специализации");
-                    UUID specializationId = UUID.fromString(in.next());
+                    System.out.println("Введите id предмета");
+                    UUID subjectId = UUID.fromString(in.next());
                     System.out.println("Введите название темы");
                     String topicName = in.next();
-                    Topic topic = new Topic(topicName, specializationId);
-                    TopicsOfSpecializationService service = new TopicsOfSpecializationIMPL();
+                    Topic topic = new Topic(topicName, subjectId);
+                    TopicsOfSubjectService service = new TopicsOfSubjectIMPL();
                     service.addTopic(topic);
-                    SpecializationService specializationService = new SpecializationServiceIMPL();
-                    Specialization specialization = specializationService.getSpecializationById(specializationId);
-                    specialization.setTopics(topic);
+                    SubjectService subjectService = new SubjectServiceIMPL();
+                    Subject subject = subjectService.getSubjectById(subjectId);
+                    subject.setTopics(topic);
                 }
 //                case 91 -> {
 //                    System.out.println("Введите id специализации");
 //                    UUID specializationId = UUID.fromString(in.next());
-//                    SpecializationService service = new SpecializationServiceIMPL();
-//                    Specialization specialization = service.getSpecializationById(specializationId);
+//                    SubjectService service = new SubjectServiceIMPL();
+//                    Subject specialization = service.getSpecializationById(specializationId);
 //                    specialization.getTopics();
 //                }
                 case 92 -> {
+                    System.out.println("Введите id предмета");
+                    UUID specializationId = UUID.fromString(in.next());
+                    TopicsOfSubjectService service = new TopicsOfSubjectIMPL();
+                    service.getTopicsBySpecializationSubjectId(specializationId).forEach(System.out::println);
+                }
+                case 10 ->{
+                    System.out.println("Введите id студента");
+                    UUID studentId = UUID.fromString(in.next());
+                    System.out.println("Введите id факультета");
+                    UUID facultyId = UUID.fromString(in.next());
+                    System.out.println("Введите id группы");
+                    UUID groupId = UUID.fromString(in.next());
                     System.out.println("Введите id специализации");
                     UUID specializationId = UUID.fromString(in.next());
-                    TopicsOfSpecializationService service = new TopicsOfSpecializationIMPL();
-                    service.getTopicsBySpecializationId(specializationId).forEach(System.out::println);
+                    ComplexId complexId = new ComplexId(studentId, facultyId, groupId, specializationId);
+                    ComplexStudentService service = new ComplexStudentServiceImpl();
+                    service.addComplexId(complexId);
+                }
+                case 101 -> {
+                    FacultyService service = new FacultyServiceIMPL();
+                    service.getAllFaculties().forEach(System.out::println);
+                }
+                case 113 -> {
+
                 }
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");

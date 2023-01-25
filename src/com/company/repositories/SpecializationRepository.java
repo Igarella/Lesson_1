@@ -1,16 +1,14 @@
 package com.company.repositories;
 
+import com.company.DTO.Group;
 import com.company.DTO.Specialization;
+import com.company.services.SpecializationService;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface SpecializationRepository {
-    void addSpecialization(Specialization specialization);
 
     List<Specialization> getAllSpecializations();
 
-    String getNameById(UUID specializationId);
-
-    Specialization getSpecializationById(UUID specializationId);
+    void addSpecialization(Specialization specialization);
 }

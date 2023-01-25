@@ -1,5 +1,7 @@
 package com.company.repositories.IMPL;
 
+import com.company.DTO.Group;
+import com.company.DTO.Specialization;
 import com.company.DTO.Specialization;
 import com.company.repositories.SpecializationRepository;
 
@@ -9,18 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class SpecializationRepositoryIMPL implements SpecializationRepository {
-    @Override
-    public void addSpecialization(Specialization specialization) {
-        File file = new File("resources/Specializations.txt");
-        try {
-            FileWriter writer = new FileWriter(file,true);
-            writer.write(specialization.getId() + "," + specialization.getNameSpecialization() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
+    
     @Override
     public List<Specialization> getAllSpecializations() {
         List<Specialization> specializationList = new ArrayList<>();
@@ -34,7 +25,8 @@ public class SpecializationRepositoryIMPL implements SpecializationRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] specializationFields = line.split(",");
-                Specialization specialization = new Specialization(UUID.fromString(specializationFields[0]), specializationFields[1]);
+                Specialization specialization = new Specialization(UUID.fromString(specializationFields[0]), UUID.fromString(specializationFields[1]),
+                        specializationFields[2]);
                 specializationList.add(specialization);
                 // считываем остальные строки в цикле
                 line = reader.readLine();
@@ -46,21 +38,16 @@ public class SpecializationRepositoryIMPL implements SpecializationRepository {
     }
 
     @Override
-    public String getNameById(UUID specializationId) {
-        return getAllSpecializations()
-                .stream()
-                .filter(e -> e.getId().equals(specializationId))
-                .map(e -> e.getNameSpecialization())
-                .findFirst()
-                .get();
+    public void addSpecialization(Specialization specialization) {
+        try {
+            FileWriter writer = new FileWriter("resources/Specializations.txt",true);
+            writer.write(specialization.getSpecializationId() + "," + specialization.getGroupId() + "," + specialization.getFacultyId() + ","
+                    + specialization.getSpecializationName() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
-    @Override
-    public Specialization getSpecializationById(UUID specializationId) {
-       return getAllSpecializations()
-                .stream()
-                .filter(e -> e.getId().equals(specializationId))
-                .findFirst()
-                .get();
-    }
+
 }

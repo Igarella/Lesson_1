@@ -7,7 +7,7 @@ import java.util.UUID;
 public class Topic {
     private UUID id;
     private String name;
-    private UUID specializationId;
+    private UUID subjectId;
     private List<Assessment> assessments = new ArrayList<>();
 
     public List<Assessment> getAssessments() {
@@ -18,16 +18,16 @@ public class Topic {
         this.assessments.add(assessment);
     }
 
-    public Topic(String name, UUID specializationId) {
+    public Topic(String name, UUID SubjectId) {
         this.id = UUID.randomUUID();
         this.name = name;
-        this.specializationId = specializationId;
+        this.subjectId = subjectId;
     }
 
-    public Topic(UUID id, String name, UUID specializationId) {
+    public Topic(UUID id, String name, UUID subjectId) {
         this.id = id;
         this.name = name;
-        this.specializationId = specializationId;
+        this.subjectId = subjectId;
     }
 
     @Override
@@ -35,7 +35,7 @@ public class Topic {
         return "Topic{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", specializationId=" + specializationId +
+                ", subjectId=" + subjectId +
                 ", assessments=" + assessments +
                 '}';
     }
@@ -56,11 +56,11 @@ public class Topic {
         this.name = name;
     }
 
-    public UUID getSpecializationId() {
-        return specializationId;
+    public UUID getSubjectId() {
+        return subjectId;
     }
 
-    public void setSpecializationId(UUID specializationId) {
-        this.specializationId = specializationId;
+    public void setSubjectId(UUID subjectId) {
+        this.subjectId = subjectId;
     }
 }

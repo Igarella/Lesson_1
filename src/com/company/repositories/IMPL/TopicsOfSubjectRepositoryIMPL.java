@@ -1,7 +1,7 @@
 package com.company.repositories.IMPL;
 
 import com.company.DTO.Topic;
-import com.company.repositories.TopicsOfSpecializationRepository;
+import com.company.repositories.TopicsOfSubjectRepository;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class TopicsOfSpecializationRepositoryIMPL implements TopicsOfSpecializationRepository {
+public class TopicsOfSubjectRepositoryIMPL implements TopicsOfSubjectRepository {
 
     @Override
-    public List<Topic> getTopicsBySpecializationId(UUID specializationId) {
+    public List<Topic> getTopicsBySubjectId(UUID subjectId) {
         return getAllTopics()
                 .stream()
-                .filter(e -> e.getSpecializationId().equals(specializationId))
+                .filter(e -> e.getSubjectId().equals(subjectId))
                 .collect(Collectors.toList());
     }
 
@@ -47,7 +47,7 @@ public class TopicsOfSpecializationRepositoryIMPL implements TopicsOfSpecializat
     public void addTopic(Topic topic) {
         try {
             FileWriter writer = new FileWriter("resources/Topics.txt",true);
-            writer.write(topic.getId() + "," + topic.getName() + "," + topic.getSpecializationId() + "\n");
+            writer.write(topic.getId() + "," + topic.getName() + "," + topic.getSubjectId() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();

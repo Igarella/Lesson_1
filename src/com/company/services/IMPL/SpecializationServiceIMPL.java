@@ -6,7 +6,6 @@ import com.company.repositories.SpecializationRepository;
 import com.company.services.SpecializationService;
 
 import java.util.List;
-import java.util.UUID;
 
 public class SpecializationServiceIMPL implements SpecializationService {
     @Override
@@ -19,16 +18,5 @@ public class SpecializationServiceIMPL implements SpecializationService {
     public void addSpecialization(Specialization specialization) {
         SpecializationRepository repository = new SpecializationRepositoryIMPL();
         repository.addSpecialization(specialization);
-    }
-
-    @Override
-    public void deleteSpecialization(UUID uuid) {
-
-    }
-
-    @Override
-    public Specialization getSpecializationById(UUID specializationId) {
-        SpecializationRepository repository = new SpecializationRepositoryIMPL();
-        return repository.getSpecializationById(specializationId);
     }
 }
