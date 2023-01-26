@@ -7,6 +7,20 @@ public class TimeTable {
     private UUID subjectId;
     private int hours;
 
+    public TimeTable(UUID teacherId, UUID subjectId, int hours){
+        this.timeTableId = UUID.randomUUID();
+        this.teacherId = teacherId;
+        this.subjectId = subjectId;
+        this.hours = hours;
+    }
+
+    public TimeTable(UUID timeTableId, UUID teacherId, UUID subjectId, int hours) {
+        this.timeTableId = timeTableId;
+        this.teacherId = teacherId;
+        this.subjectId = subjectId;
+        this.hours = hours;
+    }
+
     public UUID getTimeTableId() {
         return timeTableId;
     }
@@ -41,7 +55,7 @@ public class TimeTable {
 
     @Override
     public String toString() {
-        return "TimeTable.txt{" +
+        return "TimeTables.txt{" +
                 "timeTableId=" + timeTableId +
                 ", teacherId=" + teacherId +
                 ", subjectId=" + subjectId +

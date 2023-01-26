@@ -16,7 +16,7 @@ public class AssessmentRepositoryIMPL implements AssessmentRepository {
     public void addAssessment(Assessment assessment) {
         try {
             FileWriter writer = new FileWriter("resources/Assessments.txt",true);
-            writer.write(assessment.getId() + "," + assessment.getStudentSpecializationId()
+            writer.write(assessment.getId() + "," + assessment.getStudentSubjectId()
                     + "," + assessment.getMark() + "," + assessment.getTopicId()  + "\n");
             writer.close();
         } catch (IOException e) {
@@ -25,18 +25,18 @@ public class AssessmentRepositoryIMPL implements AssessmentRepository {
     }
 
     @Override
-    public List<Assessment> getAssessmentsOfTopic(UUID studentSpecializationId, UUID topicId) {
+    public List<Assessment> getAssessmentsOfTopic(UUID studentSubjectId, UUID topicId) {
         return getAllAssessments()
                 .stream()
-                .filter(e -> e.getStudentSpecializationId().equals(studentSpecializationId) && e.getTopicId().equals(topicId))
+                .filter(e -> e.getStudentSubjectId().equals(studentSubjectId) && e.getTopicId().equals(topicId))
                 .collect(Collectors.toList());
     }
 
     @Override
-    public List<Assessment> getAssessmentsOfSpecializationStudent(UUID studentSpecializationId) {
+    public List<Assessment> getAssessmentsOfSubjectStudent(UUID studentSubjectId) {
         return getAllAssessments()
                 .stream()
-                .filter(e -> e.getStudentSpecializationId().equals(studentSpecializationId))
+                .filter(e -> e.getStudentSubjectId().equals(studentSubjectId))
                 .collect(Collectors.toList());
     }
 
@@ -65,5 +65,14 @@ public class AssessmentRepositoryIMPL implements AssessmentRepository {
             e.printStackTrace();
         }
         return assessmentList;
+    }
+
+    @Override
+    public Assessment getAssessmentById(UUID assessmentId) {
+        return getAllAssessments()
+                .stream()
+                .filter(e->e.getId().equals(assessmentId))
+                .findFirst()
+                .get();
     }
 }

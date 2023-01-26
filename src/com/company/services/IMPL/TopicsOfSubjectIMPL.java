@@ -10,9 +10,9 @@ import java.util.UUID;
 
 public class TopicsOfSubjectIMPL implements TopicsOfSubjectService {
     @Override
-    public List<Topic> getTopicsBySpecializationSubjectId(UUID specializationId) {
+    public List<Topic> getTopicsBySubjectSubjectId(UUID subjectId) {
         TopicsOfSubjectRepository repository = new TopicsOfSubjectRepositoryIMPL();
-        return repository.getTopicsBySubjectId(specializationId);
+        return repository.getTopicsBySubjectId(subjectId);
     }
 
     @Override

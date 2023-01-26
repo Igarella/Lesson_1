@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Assessment {
     private UUID id;
-    private UUID studentSpecializationId;
+    private UUID studentSubjectId;
     private int mark;
     private UUID topicId;
 
@@ -16,16 +16,16 @@ public class Assessment {
         this.topicId = topicId;
     }
 
-    public Assessment(UUID studentSpecializationId, int mark, UUID topicId) {
+    public Assessment(UUID studentSubjectId, int mark, UUID topicId) {
         this.id = UUID.randomUUID();
-        this.studentSpecializationId = studentSpecializationId;
+        this.studentSubjectId = studentSubjectId;
         this.mark = mark;
         this.topicId = topicId;
     }
 
-    public Assessment(UUID id, UUID studentSpecializationId, int mark, UUID topicId) {
+    public Assessment(UUID id, UUID studentSubjectId, int mark, UUID topicId) {
         this.id = id;
-        this.studentSpecializationId = studentSpecializationId;
+        this.studentSubjectId = studentSubjectId;
         this.mark = mark;
         this.topicId = topicId;
     }
@@ -38,12 +38,12 @@ public class Assessment {
         this.id = id;
     }
 
-    public UUID getStudentSpecializationId() {
-        return studentSpecializationId;
+    public UUID getStudentSubjectId() {
+        return studentSubjectId;
     }
 
-    public void setStudentSpecializationId(UUID studentSpecializationId) {
-        this.studentSpecializationId = studentSpecializationId;
+    public void setStudentSubjectId(UUID studentSubjectId) {
+        this.studentSubjectId = studentSubjectId;
     }
 
     public int getMark() {
@@ -56,11 +56,6 @@ public class Assessment {
 
     @Override
     public String toString() {
-        return "Assessment{" +
-                "id=" + id +
-                ", studentSpecializationId=" + studentSpecializationId +
-                ", mark=" + mark +
-                ", topicId=" + topicId +
-                '}';
+        return "" + mark;
     }
 }

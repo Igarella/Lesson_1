@@ -44,9 +44,9 @@ public class StudentsServiceIMPL implements StudentsService {
         Specialization specialization = specializationService.getSpecializationById(group.getSpecializationId());
         student.setSpecializationName(specialization.getSpecializationName());
 //        StudentSpecializationRepository studentSpecializationRepository = new StudentSpecializationRepositoryIMPL();
-//        List<StudentSpecialization> studentSpecializationList = studentSpecializationRepository.getAllStudentSpecializations();//достал лист ВСЕХ специализаций
+//        List<StudentSubject> studentSpecializationList = studentSpecializationRepository.getAllStudentSpecializations();//достал лист ВСЕХ специализаций
 //        List<Subject> subjects = new ArrayList<>();
-//        for (StudentSpecialization studentSpecialization : studentSpecializationList) {
+//        for (StudentSubject studentSpecialization : studentSpecializationList) {
 //            UUID subjectId = studentSpecialization.getSpecialization();
 //            SubjectRepository subjectRepository = new SubjectRepositoryIMPL();
 //           String name = subjectRepository.getNameById(subjectId);

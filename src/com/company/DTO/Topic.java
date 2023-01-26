@@ -10,15 +10,7 @@ public class Topic {
     private UUID subjectId;
     private List<Assessment> assessments = new ArrayList<>();
 
-    public List<Assessment> getAssessments() {
-        return assessments;
-    }
-
-    public void setAssessments(Assessment assessment) {
-        this.assessments.add(assessment);
-    }
-
-    public Topic(String name, UUID SubjectId) {
+    public Topic(String name, UUID subjectId) {
         this.id = UUID.randomUUID();
         this.name = name;
         this.subjectId = subjectId;
@@ -29,6 +21,15 @@ public class Topic {
         this.name = name;
         this.subjectId = subjectId;
     }
+
+    public List<Assessment> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(Assessment assessment) {
+        this.assessments.add(assessment);
+    }
+
 
     @Override
     public String toString() {

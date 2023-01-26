@@ -15,6 +15,7 @@ public class ComplexId {
         this.facultyId = facultyId;
         this.groupId = groupId;
         this.specializationId = specializationId;
+
     }
 
     public ComplexId(UUID complexStudentId, UUID studentId, UUID facultyId, UUID groupId, UUID specializationId) {

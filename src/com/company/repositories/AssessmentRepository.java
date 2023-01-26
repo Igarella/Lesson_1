@@ -9,10 +9,11 @@ public interface AssessmentRepository {
 
     void addAssessment(Assessment assessment);
 
-    List<Assessment> getAssessmentsOfTopic(UUID studentSpecializationId, UUID topicId);
+    List<Assessment> getAssessmentsOfTopic(UUID studentSubjectId, UUID topicId);
 
-    List<Assessment> getAssessmentsOfSpecializationStudent(UUID studentSpecializationId);
+    List<Assessment> getAssessmentsOfSubjectStudent(UUID studentSubjectId);
 
     List<Assessment> getAllAssessments();
 
+    Assessment getAssessmentById(UUID assessmentId);
 }

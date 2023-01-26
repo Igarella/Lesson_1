@@ -4,23 +4,23 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class StudentSpecialization {
+public class StudentSubject {
     private UUID id;
     private UUID studentId;
-    private UUID specialization;
+    private UUID subjectId;
     private List<Assessment> marks = new ArrayList<>();
 
-    public StudentSpecialization(UUID id, UUID studentId, UUID specialization) {
+    public StudentSubject(UUID id, UUID studentId, UUID subject) {
         this.id = id;
         this.studentId = studentId;
-        this.specialization = specialization;
+        this.subjectId = subject;
 
     }
 
-    public StudentSpecialization(UUID studentId, UUID specialization) {
+    public StudentSubject(UUID studentId, UUID subject) {
         this.id = UUID.randomUUID();
         this.studentId = studentId;
-        this.specialization = specialization;
+        this.subjectId = subject;
     }
 
     public UUID getId() {
@@ -35,24 +35,24 @@ public class StudentSpecialization {
         return studentId;
     }
 
-    public UUID getSpecialization() {
-        return specialization;
+    public UUID getSubject() {
+        return subjectId;
     }
 
-    public void setSpecialization(UUID specialization) {
-        this.specialization = specialization;
+    public void setSubject(UUID subject) {
+        this.subjectId = subject;
     }
 
-    public void setMarks(Assessment assessment){
+    public void setMarks(Assessment assessment) {
         marks.add(assessment);
     }
 
     @Override
     public String toString() {
-        return "StudentSpecialization{" +
+        return "StudentSubject{" +
                 "id=" + id +
                 ", studentId=" + studentId +
-                ", specialization=" + specialization +
+                ", subject=" + subjectId +
                 '}';
     }
 }

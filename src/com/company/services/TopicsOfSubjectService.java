@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public interface TopicsOfSubjectService {
-    List<Topic> getTopicsBySpecializationSubjectId(UUID specializationId);
+    List<Topic> getTopicsBySubjectSubjectId(UUID subjectId);
 
     List<Topic> getAllTopics();
 

@@ -7,8 +7,8 @@ public class MenuProgram {
         System.out.println("11 – Просмотр списка удаленных студентов");
         System.out.println("2 – Добавление студента");
         System.out.println("21 – Добавление студента в группу");
-        System.out.println("22 – Просмотр списка групп");
-        System.out.println("3 – Удаление студента");
+        System.out.println("22 – Удаление студента");
+        System.out.println("23 – Просмотр списка групп");
         System.out.println("4 – Добавление телефона студенту");
         System.out.println("5 – Получение студента по Id");
         System.out.println("6 – Добавление email студенту");
@@ -25,6 +25,10 @@ public class MenuProgram {
         System.out.println("111 - Просмотр списка факультетов");
         System.out.println("112 - Просмотр списка cпециальностей");
         System.out.println("113 - Добавление cпециальности");
+        System.out.println("114 - ....... Вывод данных студента по заданию");
+        System.out.println("200 - Добавление учителя в БД");
+        System.out.println("201 - просмотр учителя по ID в БД");
+        System.out.println("300 - Добавление Объекта TimeTable в БД");
         System.out.println("0 – Возврат в главное меню");
         System.out.println("9 – ВЫХОД ");
     }

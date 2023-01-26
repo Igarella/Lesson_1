@@ -4,8 +4,23 @@ import java.util.UUID;
 
 public class Teacher {
     private UUID teacherId;
-    private UUID facultyId;
-    private String name;
+    private String firstName;
+    private String secondName;
+    private UUID subjectId;
+
+    public Teacher(String firstName, String secondName, UUID subjectId) {
+        this.teacherId = UUID.randomUUID();
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.subjectId = subjectId;
+    }
+
+    public Teacher(UUID teacherId, String firstName, String secondName, UUID subjectId) {
+        this.teacherId = teacherId;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.subjectId = subjectId;
+    }
 
     public UUID getTeacherId() {
         return teacherId;
@@ -15,28 +30,37 @@ public class Teacher {
         this.teacherId = teacherId;
     }
 
-    public UUID getFacultyId() {
-        return facultyId;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFacultyId(UUID facultyId) {
-        this.facultyId = facultyId;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getName() {
-        return name;
+    public String getSecondName() {
+        return secondName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSecondName(String secondName) {
+        this.secondName = secondName;
+    }
+
+    public UUID getSubjectId() {
+        return subjectId;
+    }
+
+    public void setSubjectId(UUID subjectId) {
+        this.subjectId = subjectId;
     }
 
     @Override
     public String toString() {
         return "Teacher{" +
                 "teacherId=" + teacherId +
-                ", facultyId=" + facultyId +
-                ", name='" + name + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", subjectId=" + subjectId +
                 '}';
     }
 }
