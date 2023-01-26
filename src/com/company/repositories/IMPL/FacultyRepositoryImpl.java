@@ -43,4 +43,13 @@ public class FacultyRepositoryImpl implements FacultyRepository {
         }
         return facultyList;
     }
+
+    @Override
+    public Faculty getFacultyById(UUID facultyId) {
+        return getAllFaculties()
+                .stream()
+                .filter(e->e.getFacultyId().equals(facultyId))
+                .findFirst()
+                .get();
+    }
 }

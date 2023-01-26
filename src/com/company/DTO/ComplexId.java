@@ -64,4 +64,15 @@ public class ComplexId {
     public void setSpecializationId(UUID specializationId) {
         this.specializationId = specializationId;
     }
+
+    @Override
+    public String toString() {
+        return "ComplexId{" +
+                "id=" + id +
+                ", studentId=" + studentId +
+                ", facultyId=" + facultyId +
+                ", groupId=" + groupId +
+                ", specializationId=" + specializationId +
+                '}';
+    }
 }

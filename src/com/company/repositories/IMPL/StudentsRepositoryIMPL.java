@@ -25,7 +25,7 @@ public class StudentsRepositoryIMPL implements StudentsRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] studentFromFile = line.split(",");
-                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2], Boolean.parseBoolean(studentFromFile[3]));
+                Student student = new Student(UUID.fromString(studentFromFile[0]), studentFromFile[1], studentFromFile[2], studentFromFile[3], Boolean.parseBoolean(studentFromFile[4]));
                 studentList.add(student);
                 // считываем остальные строки в цикле
                 line = reader.readLine();

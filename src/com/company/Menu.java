@@ -173,11 +173,19 @@ public class Menu {
                     service.addComplexId(complexId);
                 }
                 case 101 -> {
+                    ComplexStudentService service = new ComplexStudentServiceImpl();
+                    service.getAllComplexStudents().forEach(System.out::println);
+                }
+                case 111 -> {
                     FacultyService service = new FacultyServiceIMPL();
                     service.getAllFaculties().forEach(System.out::println);
                 }
                 case 113 -> {
-
+                    System.out.println("Введите название специализации");
+                    String specializationName = in.next();
+                    Specialization specialization = new Specialization(specializationName);
+                    SpecializationService service = new SpecializationServiceIMPL();
+                    service.addSpecialization(specialization);
                 }
                 case 0 -> MenuProgram.menuProgram();
                 default -> System.out.println("Введите правильный номер");

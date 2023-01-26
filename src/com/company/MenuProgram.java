@@ -21,6 +21,7 @@ public class MenuProgram {
         System.out.println("91 - Просмотр предмета по id");
         System.out.println("92 - Просмотр тем по предмету");
         System.out.println("10 - Добавление ComplexId в БД");
+        System.out.println("101 - Просмотр всех ComplexId в БД");
         System.out.println("111 - Просмотр списка факультетов");
         System.out.println("112 - Просмотр списка cпециальностей");
         System.out.println("113 - Добавление cпециальности");

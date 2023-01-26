@@ -1,6 +1,6 @@
-2e680b07-8f70-42fc-a472-3cc89b8b0f92,Ivan,Petrov,true
-b1f6c4d2-aba5-4471-b22c-342c6b33a245,Igor,Ivanov,false
-b1f6c4d2-aba5-4471-b32c-342c6b33a123,Alex,Igorev,false
-db95c299-2aaa-4c54-8f7d-5c90b2eca2d6,Sasha,Sherbakov,false
-0f455e1e-7780-4cfa-82c7-2ee946a38852,Anya,Krytova,true
+2e680b07-8f70-42fc-a472-3cc89b8b0f92,Ivan,Petrov,11.01.1995,true
+b1f6c4d2-aba5-4471-b22c-342c6b33a245,Igor,Ivanov,11.01.1995,false
+b1f6c4d2-aba5-4471-b32c-342c6b33a123,Alex,Igorev,9.01.1991,false
+db95c299-2aaa-4c54-8f7d-5c90b2eca2d6,Sasha,Sherbakov,15.01.1992,false
+0f455e1e-7780-4cfa-82c7-2ee946a38852,Anya,Krytova,12.01.1995,false
 f01c62d6-c701-4d44-81b8-ba9573a2c529,Igor,Shpilevsky,11.01.1995,false

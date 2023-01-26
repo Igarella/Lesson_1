@@ -6,6 +6,7 @@ import com.company.repositories.IMPL.FacultyRepositoryImpl;
 import com.company.services.FacultyService;
 
 import java.util.List;
+import java.util.UUID;
 
 public class FacultyServiceIMPL implements FacultyService {
     @Override
@@ -19,6 +20,12 @@ public class FacultyServiceIMPL implements FacultyService {
     public List<Faculty> getAllFaculties() {
         FacultyRepository repository = new FacultyRepositoryImpl();
         return repository.getAllFaculties();
+    }
+
+    @Override
+    public Faculty getFacultyById(UUID facultyId) {
+        FacultyRepository repository = new FacultyRepositoryImpl();
+        return repository.getFacultyById(facultyId);
     }
 
 }

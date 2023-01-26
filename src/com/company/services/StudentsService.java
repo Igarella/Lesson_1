@@ -14,7 +14,7 @@ public interface StudentsService {
 
     void deleteStudent(UUID uuid);
 
-    Student getStudentById(UUID id);
+    Student  getStudentById(UUID id);
 
     List<Student> getDeletedStudents();
 

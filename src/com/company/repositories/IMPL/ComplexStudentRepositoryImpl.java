@@ -22,6 +22,9 @@ public class ComplexStudentRepositoryImpl implements ComplexStudentRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] complexStudentFields = line.split(",");
+                ComplexId complexId = new ComplexId(UUID.fromString(complexStudentFields[0]), UUID.fromString(complexStudentFields[1]),
+                        UUID.fromString(complexStudentFields[2]), UUID.fromString(complexStudentFields[3]), UUID.fromString(complexStudentFields[4]));
+                complexIdList.add(complexId);
                 // считываем остальные строки в цикле
                 line = reader.readLine();
             }
@@ -33,11 +36,12 @@ public class ComplexStudentRepositoryImpl implements ComplexStudentRepository {
 
     @Override
     public ComplexId getComplexIdByStudentId(UUID studentId) {
-       return getAllComplexStudents()
-                .stream()
-                .filter(e -> e.getStudentId().equals(studentId))
-                .findFirst()
-                .get();
+        for (ComplexId allComplexStudent : getAllComplexStudents()) {
+            if (allComplexStudent.getStudentId().equals(studentId)) {
+                return allComplexStudent;
+            }
+        }
+        return null;
     }
 
     @Override

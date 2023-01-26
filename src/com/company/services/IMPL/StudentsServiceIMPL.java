@@ -3,10 +3,7 @@ package com.company.services.IMPL;
 import com.company.DTO.*;
 import com.company.repositories.*;
 import com.company.repositories.IMPL.*;
-import com.company.services.ComplexStudentService;
-import com.company.services.GroupService;
-import com.company.services.StudentGroupService;
-import com.company.services.StudentsService;
+import com.company.services.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -35,15 +32,17 @@ public class StudentsServiceIMPL implements StudentsService {
     public Student getStudentById(UUID id) {
         StudentsRepository repository = new StudentsRepositoryIMPL();
         Student student = repository.getStudentById(id);
-        StudentGroupService service = new StudentGroupServiceImpl();
-        StudentGroup studentGroup = service.getStudentGroupByStudentId(student.getId());
-        GroupService groupService = new GroupServiceIMPL();
-        Group group = groupService.getGroupById(studentGroup.getGroupId());
-        student.setGroupName(group.getGroupName());
         ComplexStudentService complexStudentService = new ComplexStudentServiceImpl();
         ComplexId complexId = complexStudentService.getComplexIdByStudentId(student.getId());
-
-
+        GroupService groupService = new GroupServiceIMPL();
+        Group group = groupService.getGroupById(complexId.getGroupId());
+        student.setGroupName(group.getGroupName());
+        FacultyService facultyService = new FacultyServiceIMPL();
+        Faculty faculty = facultyService.getFacultyById(group.getFacultyId());
+        student.setFacultyName(faculty.getFacultyName());
+        SpecializationService specializationService = new SpecializationServiceIMPL();
+        Specialization specialization = specializationService.getSpecializationById(group.getSpecializationId());
+        student.setSpecializationName(specialization.getSpecializationName());
 //        StudentSpecializationRepository studentSpecializationRepository = new StudentSpecializationRepositoryIMPL();
 //        List<StudentSpecialization> studentSpecializationList = studentSpecializationRepository.getAllStudentSpecializations();//достал лист ВСЕХ специализаций
 //        List<Subject> subjects = new ArrayList<>();

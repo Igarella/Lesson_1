@@ -25,8 +25,7 @@ public class SpecializationRepositoryIMPL implements SpecializationRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] specializationFields = line.split(",");
-                Specialization specialization = new Specialization(UUID.fromString(specializationFields[0]), UUID.fromString(specializationFields[1]),
-                        specializationFields[2]);
+                Specialization specialization = new Specialization(UUID.fromString(specializationFields[0]), specializationFields[1]);
                 specializationList.add(specialization);
                 // считываем остальные строки в цикле
                 line = reader.readLine();
@@ -41,12 +40,21 @@ public class SpecializationRepositoryIMPL implements SpecializationRepository {
     public void addSpecialization(Specialization specialization) {
         try {
             FileWriter writer = new FileWriter("resources/Specializations.txt",true);
-            writer.write(specialization.getSpecializationId() + "," + specialization.getGroupId() + "," + specialization.getFacultyId() + ","
+            writer.write(specialization.getSpecializationId() + ","
                     + specialization.getSpecializationName() + "\n");
             writer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Specialization getSpecializationById(UUID specializationId) {
+        return getAllSpecializations()
+                .stream()
+                .filter(e -> e.getSpecializationId().equals(specializationId))
+                .findFirst()
+                .get();
     }
 
 

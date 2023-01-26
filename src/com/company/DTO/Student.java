@@ -109,6 +109,14 @@ public class Student implements Serializable {
         this.archived = archived;
     }
 
+    public Student(UUID id, String firstName, String secondName, String birthday, boolean archived) {
+        this.id = id;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.archived = archived;
+        this.birthday = birthday;
+    }
+
     public UUID getGroupId() {
         return groupId;
     }
@@ -183,10 +191,10 @@ public class Student implements Serializable {
 
     @Override
     public String toString() {
-        return "Студент: " + getFirstName() + " " + getSecondName() + "," +
-                "дата рождения: " + getBirthday() + " ," +
-                "Специальность: " + getSpecializationName() + " ," +
-                "Группа: " + getGroupName() + " ," +
-                "Факультет: " + getFacultyName();
+        return "Студент:" + getFirstName() + " " + getSecondName() + ", " +
+                "дата рождения:" + getBirthday() + ", " +
+                "Специальность:" + getSpecializationName() + ", " +
+                "Группа:" + getGroupName() + ", " +
+                "Факультет:" + getFacultyName();
     }
 }

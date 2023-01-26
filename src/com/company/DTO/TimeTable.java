@@ -7,7 +7,6 @@ public class TimeTable {
     private UUID subjectId;
     private int hours;
 
-
     public UUID getTimeTableId() {
         return timeTableId;
     }

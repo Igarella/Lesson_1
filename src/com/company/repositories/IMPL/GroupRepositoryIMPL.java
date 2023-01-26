@@ -25,7 +25,7 @@ public class GroupRepositoryIMPL implements GroupRepository {
             String line = reader.readLine();
             while (line != null) {
                 String[] groupFields = line.split(",");
-                Group group = new Group(UUID.fromString(groupFields[0]), UUID.fromString(groupFields[1]), groupFields[2]);
+                Group group = new Group(UUID.fromString(groupFields[0]), UUID.fromString(groupFields[1]), groupFields[2], UUID.fromString(groupFields[3]));
                 groupList.add(group);
                 // считываем остальные строки в цикле
                 line = reader.readLine();
